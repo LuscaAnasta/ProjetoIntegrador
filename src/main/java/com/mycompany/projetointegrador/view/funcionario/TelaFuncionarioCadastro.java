@@ -2,7 +2,11 @@ package com.mycompany.projetointegrador.view.funcionario;
 
 
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
+import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.view.TelaInicial;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -21,82 +27,170 @@ import javax.swing.JTextField;
  */
 public class TelaFuncionarioCadastro extends JFrame{
     
-    private JPanel telaFuncionarioCadastro;
-    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lblcpf, lblemail; 
+    private JPanel pnlTela, pnlAtividade, pnlTabela;
+    private JTable tbFuncionario;
+    private JScrollPane sp;
+    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail; 
     private JButton btnVoltar, btnConfirmar;
+    private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar;
     private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
     private JPasswordField  senha_usuario, confsenha_usuario;
     
     public TelaFuncionarioCadastro(){
         
         setResizable(false);
-        setTitle("Cadastrar Funcionario");
+        setTitle("Painel Funcionario");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 600);
+        setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
         
-        telaFuncionarioCadastro = new JPanel();
-        telaFuncionarioCadastro.setBackground(Color.WHITE);
-        setContentPane(telaFuncionarioCadastro);
-        telaFuncionarioCadastro.setLayout(null);
+        pnlTela = new JPanel();
+        pnlTela.setBackground(Color.WHITE);
+        setContentPane(pnlTela);
+        pnlTela.setLayout(null);
         
-        lblnome=new JLabel("Nome Funcionario");
-        lblnome.setBounds(100, 10, 200, 10); 
-        telaFuncionarioCadastro.add(lblnome);
+        pnlAtividade = new JPanel();
+        pnlAtividade.setBackground(Color.yellow);
+        pnlAtividade.setBounds(20, 300, 960, 280);
+        pnlAtividade.setLayout(null);
+        pnlTela.add(pnlAtividade);
+        
+        pnlTabela = new JPanel(new BorderLayout());
+        pnlTabela.setBackground(Color.red);
+        pnlTabela.setBounds(20,50, 960, 200);
+        pnlTela.add(pnlTabela);
+        
+        
+        String[][] data = {};
+        String[] columnNames = {};
+        
+        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionariosModel();
+        if(tabela != null){
+            tabela.getDados();
+            data = tabela.getDados();
+            columnNames = tabela.getNomeColunas();
+        }else{
+             JOptionPane.showMessageDialog(null,"Modelo null.");
+        }
+        
+        
+        tbFuncionario = new JTable(data, columnNames);
+        tbFuncionario.setFillsViewportHeight(true);
+        tbFuncionario.setBounds(100,400, 800, 50);
+        tbFuncionario.setRowHeight(30);
+        int n = tbFuncionario.getColumnCount()-1;
+        
+        sp = new JScrollPane(tbFuncionario);
+        
+        pnlTabela.add(sp, BorderLayout.CENTER);
+       
+        
+        btnVoltar = new JButton("Voltar");
+        btnVoltar.setBounds(20, 600, 100, 50);
+        pnlTela.add(btnVoltar);
+        
+        btnVoltar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x) {
+                TelaInicial telai = new TelaInicial();
+                telai.setVisible(true);
+                dispose();
+        
+            }
+        });
+        
+        btnTelaCadastro = new JButton("Cadastrar funcionario");
+        btnTelaCadastro.setBounds(20, 10, 320, 40);
+        pnlTela.add(btnTelaCadastro);
+        
+        btnTelaCadastro.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                
+                TelaFuncionarioCadastro telaCadastro = new TelaFuncionarioCadastro();
+                telaCadastro.setVisible(true);
+                dispose();
+                
+            }
+        });
+        
+        btnTelaDeletar = new JButton("Deletar funcionario");
+        btnTelaDeletar.setBounds(340, 10, 319, 40);
+        pnlTela.add(btnTelaDeletar);
+        
+        btnTelaDeletar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                
+                TelaFuncionarioDeletar telaDeletar = new TelaFuncionarioDeletar();
+                telaDeletar.setVisible(true);
+                dispose();
+            }
+        });
+        
+        btnTelaEditar = new JButton("Editar funcionario");
+        btnTelaEditar.setBounds(659, 10, 320, 40);
+        pnlTela.add(btnTelaEditar);
+        
+        btnTelaEditar.addActionListener(e -> {
+            // Cria e mostra o ChecarEditar
+            ChecarEditar dialog = new ChecarEditar(this);
+        });
+        
+        lblnome=new JLabel("Nome Usuario");
+        lblnome.setBounds(10, 10, 200, 10); 
+        pnlAtividade.add(lblnome);
         
         nome_usuario = new JTextField();
-        nome_usuario.setBounds(100, 20, 200, 20);
-        telaFuncionarioCadastro.add(nome_usuario);
+        nome_usuario.setBounds(10, 20, 200, 20);
+        pnlAtividade.add(nome_usuario);
         nome_usuario.setColumns(10);
         
+        lbllogin=new JLabel("Login Usuario");
+        lbllogin.setBounds(10, 50, 200, 10); 
+        pnlAtividade.add(lbllogin);
+        
+        login_usuario = new JTextField();
+        login_usuario.setBounds(10, 60, 200, 20);
+        pnlAtividade.add(login_usuario);
+        login_usuario.setColumns(10);
+        
         lblsenha=new JLabel("Nova Senha");
-        lblsenha.setBounds(100, 50, 200, 10); 
-        telaFuncionarioCadastro.add(lblsenha);
+        lblsenha.setBounds(300, 10, 200, 10); 
+        pnlAtividade.add(lblsenha);
         
         senha_usuario = new JPasswordField();
-        senha_usuario.setBounds(100, 60, 200, 20);
-        telaFuncionarioCadastro.add(senha_usuario);
+        senha_usuario.setBounds(300, 20, 200, 20);
+        pnlAtividade.add(senha_usuario);
         senha_usuario.setColumns(10);
         
         lblCsenha=new JLabel("Confirmar Senha");
-        lblCsenha.setBounds(100, 90, 200, 10); 
-        telaFuncionarioCadastro.add(lblCsenha);
+        lblCsenha.setBounds(590, 10, 200, 10); 
+        pnlAtividade.add(lblCsenha);
         
         confsenha_usuario = new JPasswordField();
-        confsenha_usuario.setBounds(100, 100, 200, 20);
-        telaFuncionarioCadastro.add(confsenha_usuario);
+        confsenha_usuario.setBounds(590, 20, 200, 20); 
+        pnlAtividade.add(confsenha_usuario);
         confsenha_usuario.setColumns(10);
         
-        lblcpf=new JLabel("Cpf Funcionario");
-        lblcpf.setBounds(100, 130, 200, 10); 
-        telaFuncionarioCadastro.add(lblcpf);
-        
-        login_usuario = new JTextField();
-        login_usuario.setBounds(100, 140, 200, 20);
-        telaFuncionarioCadastro.add(login_usuario);
-        login_usuario.setColumns(10);
-        
-        lblemail=new JLabel("E-mail Funcionario");
-        lblemail.setBounds(100, 170, 200, 10); 
-        telaFuncionarioCadastro.add(lblemail);
+        lblemail=new JLabel("E-mail Usuario");
+        lblemail.setBounds(300, 50, 200, 10); 
+        pnlAtividade.add(lblemail);
         
         email_usuario = new JTextField();
-        email_usuario.setBounds(100, 180, 200, 20);
-        telaFuncionarioCadastro.add(email_usuario);
+        email_usuario.setBounds(300, 60, 200, 20);
+        pnlAtividade.add(email_usuario);
         email_usuario.setColumns(10);
         
-        lbltelefone=new JLabel("Telefone Funcionario");
-        lbltelefone.setBounds(100, 210, 200, 10); 
-        telaFuncionarioCadastro.add(lbltelefone);
+        lbltelefone=new JLabel("Telefone Usuario");
+        lbltelefone.setBounds(590, 50, 200, 10); 
+        pnlAtividade.add(lbltelefone);
         
         telefone_usuario = new JTextField();
-        telefone_usuario.setBounds(100, 220, 200, 20);
-        telaFuncionarioCadastro.add(telefone_usuario);
+        telefone_usuario.setBounds(590, 60, 200, 20);
+        pnlAtividade.add(telefone_usuario);
         telefone_usuario.setColumns(10);
         
         btnConfirmar = new JButton("Cadastrar");
-        btnConfirmar.setBounds(320, 210, 200, 30);
-        telaFuncionarioCadastro.add(btnConfirmar);
+        btnConfirmar.setBounds(300, 120, 200, 30);
+        pnlAtividade.add(btnConfirmar);
         
         btnConfirmar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
@@ -109,7 +203,7 @@ public class TelaFuncionarioCadastro extends JFrame{
         
         btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(50, 500, 100, 50);
-        telaFuncionarioCadastro.add(btnVoltar);
+        pnlTela.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x) {
@@ -123,43 +217,21 @@ public class TelaFuncionarioCadastro extends JFrame{
         
     }
     public void cadastrar(){
-        FuncionarioCadastrarController controller = new FuncionarioCadastrarController();
-        FuncionarioCadastrarController.cadastrarFuncionario(
-                validarFuncionario(nome_usuario.getText().toString(), senha_usuario.getText().toString(), 
-                        confsenha_usuario.getText().toString(), login_usuario.getText().toString(),
-                        telefone_usuario.getText().toString(), email_usuario.getText().toString()));
-    }
-    public FuncionarioModel validarFuncionario(String nome, String senha, String conf_senha, String login, String telefone, String email){
-        int tele = 0;
-        boolean valido = true;
-        if(nome.isBlank() && email.isBlank()){
-            System.out.println("1");
-            valido = false;
-        }
-        if(senha.isBlank() && !senha.equals(conf_senha) && senha.length()<8){
-            System.out.println("2");
-            valido = false;
-        }
-        if(login.isBlank() || login.length()>18){
-            System.out.println("3");
-            valido = false;
-        }
-        
         try{
-        tele = Integer.parseInt(telefone);
+        FuncionarioCadastrarController controller = new FuncionarioCadastrarController();
+        String nome = nome_usuario.getText();
+        String login = login_usuario.getText();
+        boolean cond = senha_usuario.getText().equals(confsenha_usuario.getText());
+        String senha = senha_usuario.getText();
+        int telefone = Integer.parseInt(telefone_usuario.getText());
+        String email = email_usuario.getText();
+       
+        controller.cadastrarFuncionario(new FuncionarioModel(nome, login, senha, telefone, email));
+        
         }catch(Exception ex){
-            System.out.println("4");
-            valido = false;
+            JOptionPane.showMessageDialog(null, "Dados Invalidos");
         }
-        
-        if(valido == false) {
-            System.out.println("5");
-            JOptionPane.showMessageDialog(null,"Dados Invalidos.");
-            return null;
-        }
-        System.out.println("saida");
-        return new FuncionarioModel(nome, login, senha, tele, email);
-        
     }
+    
    
 }

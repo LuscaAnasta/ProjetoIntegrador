@@ -20,8 +20,8 @@ public class FuncionarioEditarController {
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM funcionario WHERE id_funcionario = '"
-                +funcionario.getId()+"'");
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_funcionario WHERE id_funcionario = ? ");
+            lerDados.setInt(1, funcionario.getId());
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.isBeforeFirst()){
                 banco.FecharConexao(); 
@@ -33,29 +33,35 @@ public class FuncionarioEditarController {
         JOptionPane.showMessageDialog(null, "Usuario Não Existe");
         return false;
     }
-    public FuncionarioModel lerFuncionario(int id_funcionario){
+    
+    public FuncionarioModel lerFuncionario(FuncionarioModel funcionario){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         
         try{
             
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT FROM tb_funcionario WHERE id_funcionario = '"
-                    +id_funcionario+"'");
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_funcionario WHERE id_funcionario = ? ");
+            lerDados.setInt(1, funcionario.getId());
             banco.resultset = lerDados.executeQuery();
-            banco.resultset.next();
-            String nome = banco.resultset.getString("nome_funcionario");
-            String login = banco.resultset.getString("login_funcionario");
-            String senha = banco.resultset.getString("senha_funcionario)");
-            int telefone = banco.resultset.getInt("tel_funcionario");
-            String email = banco.resultset.getString("email_funcionario");
+            if(banco.resultset.next()){
+                
+                System.out.println("1");
+                String nome = banco.resultset.getString("nome_funcionario");
+                String login = banco.resultset.getString("login_funcionario");
+                String senha = banco.resultset.getString("senha_funcionario");
+                int telefone = banco.resultset.getInt("tel_funcionario");
+                String email = banco.resultset.getString("email_funcionario");
+                
+                return new FuncionarioModel(nome, login, senha, telefone, email);
+            }
             
-            return new FuncionarioModel(nome, login, senha, telefone, email);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Algo deu errado");
+            JOptionPane.showMessageDialog(null, "Algo deu errado ");
         }finally{ banco.FecharConexao(); }
         
         return null;
     }
+    
     public void editarFuncionario(FuncionarioModel funcionario){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
@@ -64,7 +70,8 @@ public class FuncionarioEditarController {
             
             PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_funcionario SET nome_funcionario=?, login_funcionario=?,"
                     + "senha_funcionario=?,tel_funcionario=?, email_funcionario=? "
-                    + "WHERE id_funcionario = '"+funcionario.getId()+"'");
+                    + "WHERE id_funcionario = ?");
+            atualizarDados.setInt(6, funcionario.getId());
             atualizarDados.setString(1, funcionario.getNome());
             atualizarDados.setString(2, funcionario.getLogin());
             atualizarDados.setString(3, funcionario.getSenha());
@@ -74,7 +81,7 @@ public class FuncionarioEditarController {
             atualizarDados.close();
             JOptionPane.showMessageDialog(null, "Usuario alterado com sucesso");
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Algo deu errado");
+            JOptionPane.showMessageDialog(null, "Algo deu errado, editar");
         }finally{ banco.FecharConexao(); }
         
     }

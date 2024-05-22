@@ -14,7 +14,7 @@ public class ProjetoIntegrador {
 
     public static void main(String[] args) {
         
-        TelaInicial tela = new TelaInicial();
+        TelaLogin tela = new TelaLogin();
         tela.setVisible(true);
        
     }

@@ -80,8 +80,7 @@ public class TelaFuncionario extends JFrame{
         tbFuncionario.setRowHeight(30);
         int n = tbFuncionario.getColumnCount()-1;
         
-        //tbFuncionario.getColumnModel().getColumn(n).setCellRenderer(new TableActionCellRender());
-        //tbFuncionario.getColumnModel().getColumn(n).setCellEditor(new TableActionCellEditor(event));
+        
         sp = new JScrollPane(tbFuncionario);
         
         panelTabela.add(sp, BorderLayout.CENTER);
@@ -130,12 +129,9 @@ public class TelaFuncionario extends JFrame{
         btnEditar.setBounds(659, 10, 320, 40);
         telaFuncionario.add(btnEditar);
         
-        btnEditar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent x){
-                TelaFuncionarioEditar telaEditar = new TelaFuncionarioEditar();
-                telaEditar.setVisible(true);
-                dispose();
-            }
+        btnEditar.addActionListener(e -> {
+            // Cria e mostra o ChecarEditar
+            ChecarEditar dialog = new ChecarEditar(this);
         });
     }
 }

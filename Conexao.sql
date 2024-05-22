@@ -38,7 +38,7 @@ insert into funcionario(nome_funcionario, senha_funcionario, tel_funcionario, em
 insert into reserva(id_cliente, id_funcionario, data_reserva, descricao) values ("2", "1", "2002-12-12 11:00:00", "corte a ");
 
 SELECT * FROM cliente; 
-SELECT *from tb_funcionario where id_funcionario = 1; 
+SELECT * from tb_funcionario; 
 SELECT * FROM reserva;
 
 

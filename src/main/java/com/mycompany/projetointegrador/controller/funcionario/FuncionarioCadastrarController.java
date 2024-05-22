@@ -28,9 +28,10 @@ public class FuncionarioCadastrarController {
 
                 System.out.println("3");
                 if(resultado.next()){
-                    JOptionPane.showMessageDialog(null,"CPF ja esta Cadastrado.");
+                    JOptionPane.showMessageDialog(null,"Login ja esta Cadastrado.");
                 }else{
-                    PreparedStatement inserir = bancodds.con.prepareStatement("INSERT INTO tb_funcionario(nome_funcionario, login_funcionario, senha_funcionario, tel_funcionario, email_funcionario)VALUES(?, ?, ?, ?, ?)");
+                    PreparedStatement inserir = bancodds.con.prepareStatement("INSERT INTO tb_funcionario(nome_funcionario,"
+                            + " login_funcionario, senha_funcionario, tel_funcionario, email_funcionario)VALUES(?, ?, ?, ?, ?)");
                     inserir.setString(1, funcionarioModel.getNome());
                     inserir.setString(2, funcionarioModel.getLogin());
                     inserir.setString(3, funcionarioModel.getSenha());

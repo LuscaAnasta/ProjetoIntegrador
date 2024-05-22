@@ -90,6 +90,18 @@ public class FuncionarioModel {
         this.email = email;
     }
     
+    
+
+    public FuncionarioModel(int id) {
+        this.id = id;
+    }
+    
+
+    public FuncionarioModel(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+    
     private int id;
     private String nome; 
     private String login;

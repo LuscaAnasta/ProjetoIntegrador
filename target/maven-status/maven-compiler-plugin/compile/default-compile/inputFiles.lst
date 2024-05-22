@@ -2,6 +2,7 @@
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/servico/TelaServico.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioDeletarController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/Conexao.java
+/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/TelaLogin.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/reserva/TelaReserva.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/TelaInicial.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/TelaFuncionarioDeletar.java
@@ -9,8 +10,10 @@
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/FuncionarioModel.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/TelaFuncionario.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioCadastrarController.java
+/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioLoginController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/TelaFuncionarioEditar.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioLerController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/ProjetoIntegrador.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/cliente/TelaCliente.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/TelaFuncionarioCadastro.java
+/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/ChecarEditar.java

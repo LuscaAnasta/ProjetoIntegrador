@@ -38,25 +38,18 @@ public class FuncionarioLerController {
         ResultSet resultado = lerDados.executeQuery();
         ResultSetMetaData remd = resultado.getMetaData();
         
-        int colunaN = remd.getColumnCount()+1;
+        int colunaN = remd.getColumnCount();
         String[] nomeColuna = new String[colunaN];
         for(int c = 0; c < colunaN; c++) {
-            if(colunaN-1 == c){
-               nomeColuna[c] = "";
-            }else{
                 nomeColuna[c] = remd.getColumnName(c + 1);
-            }
         }
         
         String[][] dados = new String[nLinhas][colunaN];
         int i = 0;
         while(resultado.next()) {
             for(int j = 0; j < colunaN; j++) {
-                if(colunaN-1 == j){
-                     dados[i][j] = "";
-                }else{
+               
                     dados[i][j] = resultado.getString(j + 1);
-                }
                 
             }
             i++;
