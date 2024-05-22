@@ -21,21 +21,21 @@ public class FuncionarioCadastrarController {
 
         try{
             System.out.println("1");
-            PreparedStatement verificarCpf = bancodds.con.prepareStatement("SELECT * FROM funcionario WHERE cpf_funcionario = ?");
-            verificarCpf.setInt(1, funcionarioModel.getCpf());
-            ResultSet resultado = verificarCpf.executeQuery();
+            PreparedStatement verificarLogin = bancodds.con.prepareStatement("SELECT * FROM tb_funcionario WHERE login_funcionario = ?");
+            verificarLogin.setString(1, funcionarioModel.getLogin());
+            ResultSet resultado = verificarLogin.executeQuery();
             System.out.println("2");
 
                 System.out.println("3");
                 if(resultado.next()){
                     JOptionPane.showMessageDialog(null,"CPF ja esta Cadastrado.");
                 }else{
-                    PreparedStatement inserir = bancodds.con.prepareStatement("INSERT INTO funcionario(nome_funcionario, senha_funcionario, tel_funcionario, email_funcionario, cpf_funcionario)VALUES(?, ?, ?, ?, ?)");
+                    PreparedStatement inserir = bancodds.con.prepareStatement("INSERT INTO tb_funcionario(nome_funcionario, login_funcionario, senha_funcionario, tel_funcionario, email_funcionario)VALUES(?, ?, ?, ?, ?)");
                     inserir.setString(1, funcionarioModel.getNome());
-                    inserir.setString(2, funcionarioModel.getSenha());
-                    inserir.setInt(3, funcionarioModel.getTelefone());
-                    inserir.setString(4, funcionarioModel.getEmail());
-                    inserir.setInt(5, funcionarioModel.getCpf());
+                    inserir.setString(2, funcionarioModel.getLogin());
+                    inserir.setString(3, funcionarioModel.getSenha());
+                    inserir.setInt(4, funcionarioModel.getTelefone());
+                    inserir.setString(5, funcionarioModel.getEmail());
                     inserir.execute();
                     inserir.close();
                     JOptionPane.showMessageDialog(null,"Usuario Cadastrado com Sucesso!");

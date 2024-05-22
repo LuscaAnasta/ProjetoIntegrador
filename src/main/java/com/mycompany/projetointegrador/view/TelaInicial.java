@@ -5,6 +5,9 @@
 package com.mycompany.projetointegrador.view;
 
 
+import com.mycompany.projetointegrador.view.servico.TelaServico;
+import com.mycompany.projetointegrador.view.reserva.TelaReserva;
+import com.mycompany.projetointegrador.view.cliente.TelaCliente;
 import com.mycompany.projetointegrador.view.funcionario.TelaFuncionario;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

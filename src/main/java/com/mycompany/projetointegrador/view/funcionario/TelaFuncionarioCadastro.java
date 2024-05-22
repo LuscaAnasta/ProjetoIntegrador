@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.projetointegrador.view.funcionario;
 
 
@@ -28,7 +24,7 @@ public class TelaFuncionarioCadastro extends JFrame{
     private JPanel telaFuncionarioCadastro;
     private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lblcpf, lblemail; 
     private JButton btnVoltar, btnConfirmar;
-    private JTextField nome_usuario,telefone_usuario, cpf_usuario, email_usuario;
+    private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
     private JPasswordField  senha_usuario, confsenha_usuario;
     
     public TelaFuncionarioCadastro(){
@@ -75,10 +71,10 @@ public class TelaFuncionarioCadastro extends JFrame{
         lblcpf.setBounds(100, 130, 200, 10); 
         telaFuncionarioCadastro.add(lblcpf);
         
-        cpf_usuario = new JTextField();
-        cpf_usuario.setBounds(100, 140, 200, 20);
-        telaFuncionarioCadastro.add(cpf_usuario);
-        cpf_usuario.setColumns(10);
+        login_usuario = new JTextField();
+        login_usuario.setBounds(100, 140, 200, 20);
+        telaFuncionarioCadastro.add(login_usuario);
+        login_usuario.setColumns(10);
         
         lblemail=new JLabel("E-mail Funcionario");
         lblemail.setBounds(100, 170, 200, 10); 
@@ -104,10 +100,8 @@ public class TelaFuncionarioCadastro extends JFrame{
         
         btnConfirmar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
-                FuncionarioCadastrarController.cadastrarFuncionario(cadastrarFuncionarioView(nome_usuario.getText().toString(), senha_usuario.getText().toString(), 
-                        confsenha_usuario.getText().toString(), cpf_usuario.getText().toString(),
-                        telefone_usuario.getText().toString(), email_usuario.getText().toString()));
                 
+                cadastrar();
                         
                 
             }
@@ -128,8 +122,14 @@ public class TelaFuncionarioCadastro extends JFrame{
         
         
     }
-    
-    public FuncionarioModel cadastrarFuncionarioView(String nome, String senha, String conf_senha, String cpf, String telefone, String email){
+    public void cadastrar(){
+        FuncionarioCadastrarController controller = new FuncionarioCadastrarController();
+        FuncionarioCadastrarController.cadastrarFuncionario(
+                validarFuncionario(nome_usuario.getText().toString(), senha_usuario.getText().toString(), 
+                        confsenha_usuario.getText().toString(), login_usuario.getText().toString(),
+                        telefone_usuario.getText().toString(), email_usuario.getText().toString()));
+    }
+    public FuncionarioModel validarFuncionario(String nome, String senha, String conf_senha, String login, String telefone, String email){
         int tele = 0;
         boolean valido = true;
         if(nome.isBlank() && email.isBlank()){
@@ -140,11 +140,11 @@ public class TelaFuncionarioCadastro extends JFrame{
             System.out.println("2");
             valido = false;
         }
-        if(cpf.isBlank()){
+        if(login.isBlank() || login.length()>18){
             System.out.println("3");
             valido = false;
         }
-        int cpfN = Integer.parseInt(cpf);
+        
         try{
         tele = Integer.parseInt(telefone);
         }catch(Exception ex){
@@ -158,7 +158,7 @@ public class TelaFuncionarioCadastro extends JFrame{
             return null;
         }
         System.out.println("saida");
-        return new FuncionarioModel(nome, senha, cpfN, email, tele);
+        return new FuncionarioModel(nome, login, senha, tele, email);
         
     }
    

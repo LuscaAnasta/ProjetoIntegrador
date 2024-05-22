@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,24 +20,28 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+import javax.swing.Icon;
 
 /**
  *
  * @author lucas.amsantos4
  */
 public class TelaFuncionario extends JFrame{
-    private JPanel telaFuncionario, pTabela;
+    private JPanel telaFuncionario;
+    private JPanel panelTabela, panelAtividadeAtual;
     private JButton btnVoltar;
     private JButton btnCadastrar, btnDeletar, btnEditar;
     private JTable tbFuncionario;
     private JScrollPane sp;
+    
+    
 
     public TelaFuncionario(){
-        
+       
         setResizable(false);
         setTitle("Painel Funcionario");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 600);
+        setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
         
         telaFuncionario = new JPanel();
@@ -44,11 +49,16 @@ public class TelaFuncionario extends JFrame{
         setContentPane(telaFuncionario);
         telaFuncionario.setLayout(null);
         
-        pTabela = new JPanel(new BorderLayout());
-        pTabela.setBackground(Color.yellow);
-        pTabela.setBounds(100,50, 800, 400);
+        panelAtividadeAtual = new JPanel();
+        panelAtividadeAtual.setBackground(Color.yellow);
+        panelAtividadeAtual.setBounds(20, 300, 960, 280);
+        telaFuncionario.add(panelAtividadeAtual);
         
-        telaFuncionario.add(pTabela);
+        panelTabela = new JPanel(new BorderLayout());
+        panelTabela.setBackground(Color.red);
+        panelTabela.setBounds(20,50, 960, 200);
+        telaFuncionario.add(panelTabela);
+        
         String[][] data = {};
         String[] columnNames = {};
         
@@ -67,12 +77,17 @@ public class TelaFuncionario extends JFrame{
         tbFuncionario = new JTable(data, columnNames);
         tbFuncionario.setFillsViewportHeight(true);
         tbFuncionario.setBounds(100,400, 800, 50);
+        tbFuncionario.setRowHeight(30);
+        int n = tbFuncionario.getColumnCount()-1;
+        
+        //tbFuncionario.getColumnModel().getColumn(n).setCellRenderer(new TableActionCellRender());
+        //tbFuncionario.getColumnModel().getColumn(n).setCellEditor(new TableActionCellEditor(event));
         sp = new JScrollPane(tbFuncionario);
         
-        pTabela.add(sp, BorderLayout.CENTER);
-        
+        panelTabela.add(sp, BorderLayout.CENTER);
+       
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(50, 500, 100, 50);
+        btnVoltar.setBounds(20, 600, 100, 50);
         telaFuncionario.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
@@ -84,31 +99,43 @@ public class TelaFuncionario extends JFrame{
             }
         });
         
-        btnCadastrar = new JButton("Cadastrar novo funcionario");
-        btnCadastrar.setBounds(650, 10, 250, 40);
+        btnCadastrar = new JButton("Cadastrar funcionario");
+        btnCadastrar.setBounds(20, 10, 320, 40);
         telaFuncionario.add(btnCadastrar);
         
         btnCadastrar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
+                
                 TelaFuncionarioCadastro telaCadastro = new TelaFuncionarioCadastro();
                 telaCadastro.setVisible(true);
                 dispose();
+                
             }
         });
         
         btnDeletar = new JButton("Deletar funcionario");
-        btnDeletar.setBounds(400, 10, 250, 40);
+        btnDeletar.setBounds(340, 10, 319, 40);
         telaFuncionario.add(btnDeletar);
         
         btnDeletar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
+                
                 TelaFuncionarioDeletar telaDeletar = new TelaFuncionarioDeletar();
                 telaDeletar.setVisible(true);
                 dispose();
             }
         });
+        
+        btnEditar = new JButton("Editar funcionario");
+        btnEditar.setBounds(659, 10, 320, 40);
+        telaFuncionario.add(btnEditar);
+        
+        btnEditar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                TelaFuncionarioEditar telaEditar = new TelaFuncionarioEditar();
+                telaEditar.setVisible(true);
+                dispose();
+            }
+        });
     }
-   
-    
-    
 }

@@ -15,6 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class FuncionarioModel {
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -23,20 +31,20 @@ public class FuncionarioModel {
         this.nome = nome;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public int getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
     }
 
     public int getTelefone() {
@@ -55,41 +63,37 @@ public class FuncionarioModel {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public FuncionarioModel(String nome, String senha, int cpf, String email, int telefone, int id) {
-        this.nome = nome;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
-        this.id = id;
-    }
-
   
-
     
-    private String nome, senha, email;
-    int telefone, cpf, id;
 
-    public FuncionarioModel(String nome, String senha, int cpf, String email, int telefone) {
-        this.nome = nome;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
-    public FuncionarioModel(String senha, int id) {
-        this.senha = senha;
+    public FuncionarioModel(int id, String senha) {
         this.id = id;
+        this.senha = senha;
     }
     
     
+
+    public FuncionarioModel(String nome, String login, String senha, int telefone, String email) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+    public FuncionarioModel(int id, String nome, String login, String senha, int telefone, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.email = email;
+    }
+    
+    private int id;
+    private String nome; 
+    private String login;
+    private String senha; 
+    private int telefone; 
+    private String email;
 }

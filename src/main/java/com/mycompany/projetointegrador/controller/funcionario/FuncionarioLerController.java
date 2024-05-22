@@ -29,26 +29,35 @@ public class FuncionarioLerController {
         banco.AbrirConexao();
     
     try {
-        PreparedStatement qLinhas = banco.con.prepareStatement("SELECT COUNT(id_funcionario) AS total FROM funcionario");
+        PreparedStatement qLinhas = banco.con.prepareStatement("SELECT COUNT(id_funcionario) AS total FROM tb_funcionario");
         ResultSet linhas = qLinhas.executeQuery();
         linhas.next(); // Mova o cursor para a primeira linha
         int nLinhas = linhas.getInt(1); // Acesse a primeira coluna pela posição do índice
         
-        PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM funcionario");
+        PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_funcionario");
         ResultSet resultado = lerDados.executeQuery();
         ResultSetMetaData remd = resultado.getMetaData();
         
-        int colunaN = remd.getColumnCount();
+        int colunaN = remd.getColumnCount()+1;
         String[] nomeColuna = new String[colunaN];
         for(int c = 0; c < colunaN; c++) {
-            nomeColuna[c] = remd.getColumnName(c + 1);
+            if(colunaN-1 == c){
+               nomeColuna[c] = "";
+            }else{
+                nomeColuna[c] = remd.getColumnName(c + 1);
+            }
         }
         
         String[][] dados = new String[nLinhas][colunaN];
         int i = 0;
         while(resultado.next()) {
             for(int j = 0; j < colunaN; j++) {
-                dados[i][j] = resultado.getString(j + 1);
+                if(colunaN-1 == j){
+                     dados[i][j] = "";
+                }else{
+                    dados[i][j] = resultado.getString(j + 1);
+                }
+                
             }
             i++;
         }

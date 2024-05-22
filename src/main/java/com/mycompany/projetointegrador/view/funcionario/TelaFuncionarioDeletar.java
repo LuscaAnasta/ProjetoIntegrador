@@ -41,7 +41,7 @@ public class TelaFuncionarioDeletar extends JFrame{
         
         btnConfirmar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){      
-                FuncionarioModel model = new FuncionarioModel("senha123", 5);
+                FuncionarioModel model = new FuncionarioModel( 5, "senha123");
                 FuncionarioDeletarController deletar = new FuncionarioDeletarController();
                 deletar.deletarFuncionario(model);
             }

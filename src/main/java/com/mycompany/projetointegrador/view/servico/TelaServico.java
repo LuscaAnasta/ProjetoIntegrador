@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projetointegrador.view;
+package com.mycompany.projetointegrador.view.servico;
 
+import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,27 +16,27 @@ import javax.swing.JPanel;
  *
  * @author lucas.amsantos4
  */
-public class TelaReserva extends JFrame{
+public class TelaServico extends JFrame{
     
-    private JPanel telaReserva;
+    private JPanel telaServico;
     private JButton btnVoltar;
     
-    public TelaReserva(){
+    public TelaServico(){
         
         setResizable(false);
-        setTitle("Painel Reservas");
+        setTitle("Painel Serviços");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 600);
         setLocationRelativeTo(null);
         
-        telaReserva = new JPanel();
-        telaReserva.setBackground(Color.WHITE);
-        setContentPane(telaReserva);
-        telaReserva.setLayout(null);
+        telaServico = new JPanel();
+        telaServico.setBackground(Color.WHITE);
+        setContentPane(telaServico);
+        telaServico.setLayout(null);
         
         btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(50, 500, 100, 50);
-        telaReserva.add(btnVoltar);
+        telaServico.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x) {
