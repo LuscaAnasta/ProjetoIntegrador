@@ -34,7 +34,7 @@ public class TelaFuncionarioDeletar extends JFrame{
     private JScrollPane sp;
     private JLabel lbltelefone, lblid, lblsenha;
     private JTextField telefone_usuario, id_usuario, senha_usuario;
-    private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar;
+    private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JButton btnVoltar, btnConfirmar;
     
     public TelaFuncionarioDeletar(){
@@ -64,7 +64,7 @@ public class TelaFuncionarioDeletar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionariosModel();
+        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -132,6 +132,19 @@ public class TelaFuncionarioDeletar extends JFrame{
         btnTelaEditar.addActionListener(e -> {
             // Cria e mostra o ChecarEditar
             ChecarEditar dialog = new ChecarEditar(this);
+        });
+        
+        btnRefrescar = new JButton("Refrescar");
+        btnRefrescar.setBounds(20, 250, 100, 30);
+        pnlTela.add(btnRefrescar);
+        
+        btnRefrescar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                
+                TelaFuncionarioDeletar novaTela = new TelaFuncionarioDeletar();
+                novaTela.setVisible(true);
+                dispose();
+            }
         });
         
         lblid=new JLabel("Id Usuario");

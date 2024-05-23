@@ -30,7 +30,7 @@ public class TelaFuncionario extends JFrame{
     private JPanel telaFuncionario;
     private JPanel panelTabela, panelAtividadeAtual;
     private JButton btnVoltar;
-    private JButton btnCadastrar, btnDeletar, btnEditar;
+    private JButton btnCadastrar, btnDeletar, btnEditar, btnRefrescar;
     private JTable tbFuncionario;
     private JScrollPane sp;
     
@@ -64,7 +64,7 @@ public class TelaFuncionario extends JFrame{
         
         
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionariosModel();
+        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -132,6 +132,19 @@ public class TelaFuncionario extends JFrame{
         btnEditar.addActionListener(e -> {
             // Cria e mostra o ChecarEditar
             ChecarEditar dialog = new ChecarEditar(this);
+        });
+        
+        btnRefrescar = new JButton("Refrescar");
+        btnRefrescar.setBounds(20, 250, 100, 30);
+        telaFuncionario.add(btnRefrescar);
+        
+        btnRefrescar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                
+                TelaFuncionario novaTela = new TelaFuncionario();
+                novaTela.setVisible(true);
+                dispose();
+            }
         });
     }
 }

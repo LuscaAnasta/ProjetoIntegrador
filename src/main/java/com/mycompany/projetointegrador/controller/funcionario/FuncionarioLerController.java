@@ -24,7 +24,7 @@ public class FuncionarioLerController {
     public FuncionarioLerController(TelaFuncionarioCadastro telaFuncionarioCadastro){
         this.telaFuncionarioCadastro = telaFuncionarioCadastro;
     }
-    public static FuncionarioTabela lerFuncionariosModel(){
+    public static FuncionarioTabela lerFuncionarioModel(){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
     

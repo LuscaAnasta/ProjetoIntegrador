@@ -32,7 +32,7 @@ public class TelaFuncionarioCadastro extends JFrame{
     private JScrollPane sp;
     private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail; 
     private JButton btnVoltar, btnConfirmar;
-    private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar;
+    private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
     private JPasswordField  senha_usuario, confsenha_usuario;
     
@@ -64,7 +64,7 @@ public class TelaFuncionarioCadastro extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionariosModel();
+        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -134,6 +134,19 @@ public class TelaFuncionarioCadastro extends JFrame{
             ChecarEditar dialog = new ChecarEditar(this);
         });
         
+        btnRefrescar = new JButton("Refrescar");
+        btnRefrescar.setBounds(20, 250, 100, 30);
+        pnlTela.add(btnRefrescar);
+        
+        btnRefrescar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                
+                TelaFuncionarioCadastro novaTela = new TelaFuncionarioCadastro();
+                novaTela.setVisible(true);
+                dispose();
+            }
+        });
+        
         lblnome=new JLabel("Nome Usuario");
         lblnome.setBounds(10, 10, 200, 10); 
         pnlAtividade.add(lblnome);
@@ -201,18 +214,7 @@ public class TelaFuncionarioCadastro extends JFrame{
             }
         });
         
-        btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(50, 500, 100, 50);
-        pnlTela.add(btnVoltar);
         
-        btnVoltar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent x) {
-                TelaFuncionario telaFuncionario = new TelaFuncionario();
-                telaFuncionario.setVisible(true);
-                dispose();
-        
-            }
-        });
         
         
     }

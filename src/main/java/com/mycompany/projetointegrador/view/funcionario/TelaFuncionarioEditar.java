@@ -36,7 +36,7 @@ public class TelaFuncionarioEditar extends JFrame{
     private JScrollPane sp;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar;
     private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail, lblusuAtual; 
-    private JButton btnVoltar, btnConfirmar;
+    private JButton btnVoltar, btnConfirmar, btnRefrescar;
     private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
     private JPasswordField  senha_usuario, confsenha_usuario;
     
@@ -67,7 +67,7 @@ public class TelaFuncionarioEditar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionariosModel();
+        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -220,10 +220,6 @@ public class TelaFuncionarioEditar extends JFrame{
             }
         });
         
-        
-    
-        
-        
         FuncionarioEditarController ler = new FuncionarioEditarController();
         FuncionarioModel inicio = new FuncionarioModel(id);
         preencherCampos(ler.lerFuncionario(inicio));
@@ -238,6 +234,9 @@ public class TelaFuncionarioEditar extends JFrame{
         if(cond){
             FuncionarioEditarController editar = new FuncionarioEditarController();
             editar.editarFuncionario(new FuncionarioModel(id, nome, login, senha, telefone, email));
+            TelaFuncionario telaFuncionario = new TelaFuncionario();
+            telaFuncionario.setVisible(true);
+            dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Dados incorretos");
         }
