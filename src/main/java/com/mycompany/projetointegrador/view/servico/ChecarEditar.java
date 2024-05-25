@@ -4,9 +4,12 @@
  */
 package com.mycompany.projetointegrador.view.servico;
 
+import com.mycompany.projetointegrador.controller.cliente.ClienteEditarController;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
+import com.mycompany.projetointegrador.controller.servico.ServicoEditarController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.ServicoModel;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -49,8 +52,8 @@ public class ChecarEditar extends JDialog{
                 
                 try{
                     int id = Integer.parseInt(textField.getText());
-                    FuncionarioEditarController verificar = new FuncionarioEditarController();
-                    if(verificar.checarExistencia(new FuncionarioModel(id))){
+                    ServicoEditarController verificar = new ServicoEditarController();
+                    if(verificar.checarExistencia(new ServicoModel(id))){
                         TelaServicoEditar telaEditar = new TelaServicoEditar(id);
                         telaEditar.setVisible(true);
                         frame.dispose();

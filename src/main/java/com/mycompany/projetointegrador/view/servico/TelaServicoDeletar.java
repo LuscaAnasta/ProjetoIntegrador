@@ -8,8 +8,12 @@ import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioDeletarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
+import com.mycompany.projetointegrador.controller.servico.ServicoDeletarController;
+import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,10 +35,10 @@ import javax.swing.JTextField;
 public class TelaServicoDeletar extends JFrame{
     
     private JPanel pnlTela, pnlAtividade, pnlTabela;
-    private JTable tbFuncionario;
+    private JTable tbServico;
     private JScrollPane sp;
-    private JLabel lbltelefone, lblid, lblsenha;
-    private JTextField telefone_usuario, id_usuario, senha_usuario;
+    private JLabel lblidservico, lblsenha;
+    private JTextField id_servico;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JButton btnVoltar, btnConfirmar;
     
@@ -65,7 +69,7 @@ public class TelaServicoDeletar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        ServicoTabela tabela = ServicoLerController.lerServicoModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -75,13 +79,13 @@ public class TelaServicoDeletar extends JFrame{
         }
         
         
-        tbFuncionario = new JTable(data, columnNames);
-        tbFuncionario.setFillsViewportHeight(true);
-        tbFuncionario.setBounds(100,400, 800, 50);
-        tbFuncionario.setRowHeight(30);
-        int n = tbFuncionario.getColumnCount()-1;
+        tbServico = new JTable(data, columnNames);
+        tbServico.setFillsViewportHeight(true);
+        tbServico.setBounds(100,400, 800, 50);
+        tbServico.setRowHeight(30);
+        int n = tbServico.getColumnCount()-1;
         
-        sp = new JScrollPane(tbFuncionario);
+        sp = new JScrollPane(tbServico);
         
         pnlTabela.add(sp, BorderLayout.CENTER);
        
@@ -148,44 +152,34 @@ public class TelaServicoDeletar extends JFrame{
             }
         });
         
-        lblid=new JLabel("Id Usuario");
-        lblid.setBounds(10, 50, 200, 10); 
-        pnlAtividade.add(lblid);
+        lblidservico=new JLabel("Id Usuario");
+        lblidservico.setBounds(10, 50, 200, 10); 
+        pnlAtividade.add(lblidservico);
         
-        id_usuario = new JTextField();
-        id_usuario.setBounds(10, 60, 200, 20);
-        pnlAtividade.add(id_usuario);
-        id_usuario.setColumns(10);
-        
-        lblsenha=new JLabel("Senha Usuario");
-        lblsenha.setBounds(300, 50, 200, 10); 
-        pnlAtividade.add(lblsenha);
-        
-        senha_usuario = new JTextField();
-        senha_usuario.setBounds(300, 60, 200, 20);
-        pnlAtividade.add(senha_usuario);
-        senha_usuario.setColumns(10);
+        id_servico = new JTextField();
+        id_servico.setBounds(10, 60, 200, 20);
+        pnlAtividade.add(id_servico);
+        id_servico.setColumns(10);
         
         btnConfirmar = new JButton("Deletar");
-        btnConfirmar.setBounds(590, 60, 200, 20);
+        btnConfirmar.setBounds(300, 60, 200, 20);
         pnlAtividade.add(btnConfirmar);
         
         btnConfirmar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
-                  deletarUsuario();      
+                  deletarServico();      
                 
             }
         });
     }
     
-    public void deletarUsuario(){
+    public void deletarServico(){
         try{
-            FuncionarioDeletarController deletar = new FuncionarioDeletarController();
-            int id = Integer.parseInt(id_usuario.getText());
-            String senha = senha_usuario.getText();
-            if(deletar.checarExistencia(new FuncionarioModel(id))){
-            deletar.deletarFuncionario(new FuncionarioModel(id, senha));
-            }
+            ServicoDeletarController deletar = new ServicoDeletarController();
+            int id = Integer.parseInt(id_servico.getText());
+            
+            deletar.deletarServico( new ServicoModel(id));
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados invalidos");
         }

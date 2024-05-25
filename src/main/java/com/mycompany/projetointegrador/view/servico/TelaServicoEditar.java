@@ -7,8 +7,12 @@ package com.mycompany.projetointegrador.view.servico;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
+import com.mycompany.projetointegrador.controller.servico.ServicoEditarController;
+import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,17 +37,17 @@ import javax.swing.JTextField;
 public class TelaServicoEditar extends JFrame{  
     
     private JPanel pnlTela, pnlAtividade, pnlTabela;
-    private JTable tbFuncionario;
+    private JTable tbServico;
     private JScrollPane sp;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar;
-    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail, lblusuAtual; 
+    private JLabel lbldescricao, lblvalor, lblCsenha, lbltelefone, lbllogin, lblemail, lblusuAtual; 
     private JButton btnVoltar, btnConfirmar, btnRefrescar;
-    private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
+    private JTextField descricao_servico,valor_servico, login_usuario, email_usuario;
     private JPasswordField  senha_usuario, confsenha_usuario;
     
     public TelaServicoEditar(int id){
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Serviço");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -68,7 +72,7 @@ public class TelaServicoEditar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        ServicoTabela tabela = ServicoLerController.lerServicoModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -77,17 +81,17 @@ public class TelaServicoEditar extends JFrame{
              JOptionPane.showMessageDialog(null,"Modelo null.");
         }
         
-        lblusuAtual =new JLabel(String.format("Editando usuario id: %d", id));
+        lblusuAtual =new JLabel(String.format("Editando serviço id: %d", id));
         lblusuAtual.setBounds(400, 290, 200, 10); 
         pnlTela.add(lblusuAtual);
         
-        tbFuncionario = new JTable(data, columnNames);
-        tbFuncionario.setFillsViewportHeight(true);
-        tbFuncionario.setBounds(100,400, 800, 50);
-        tbFuncionario.setRowHeight(30);
-        int n = tbFuncionario.getColumnCount()-1;
+        tbServico = new JTable(data, columnNames);
+        tbServico.setFillsViewportHeight(true);
+        tbServico.setBounds(100,400, 800, 50);
+        tbServico.setRowHeight(30);
+        int n = tbServico.getColumnCount()-1;
         
-        sp = new JScrollPane(tbFuncionario);
+        sp = new JScrollPane(tbServico);
         
         pnlTabela.add(sp, BorderLayout.CENTER);
        
@@ -105,7 +109,7 @@ public class TelaServicoEditar extends JFrame{
             }
         });
         
-        btnTelaCadastro = new JButton("Cadastrar funcionario");
+        btnTelaCadastro = new JButton("Cadastrar serviço");
         btnTelaCadastro.setBounds(20, 10, 320, 40);
         pnlTela.add(btnTelaCadastro);
         
@@ -119,7 +123,7 @@ public class TelaServicoEditar extends JFrame{
             }
         });
         
-        btnTelaDeletar = new JButton("Deletar funcionario");
+        btnTelaDeletar = new JButton("Deletar serviço");
         btnTelaDeletar.setBounds(340, 10, 319, 40);
         pnlTela.add(btnTelaDeletar);
         
@@ -132,7 +136,7 @@ public class TelaServicoEditar extends JFrame{
             }
         });
         
-        btnTelaEditar = new JButton("Editar funcionario");
+        btnTelaEditar = new JButton("Editar serviço");
         btnTelaEditar.setBounds(659, 10, 320, 40);
         pnlTela.add(btnTelaEditar);
         
@@ -141,61 +145,25 @@ public class TelaServicoEditar extends JFrame{
             ChecarEditar dialog = new ChecarEditar(this);
         });
         
-        lblnome=new JLabel("Nome Usuario");
-        lblnome.setBounds(10, 10, 200, 10); 
-        pnlAtividade.add(lblnome);
+        lbldescricao = new JLabel("Serviço");
+        lbldescricao.setBounds(10, 50, 200, 10); 
+        pnlAtividade.add(lbldescricao);
         
-        nome_usuario = new JTextField();
-        nome_usuario.setBounds(10, 20, 200, 20);
-        pnlAtividade.add(nome_usuario);
-        nome_usuario.setColumns(10);
+        descricao_servico = new JTextField();
+        descricao_servico.setBounds(10, 60, 200, 20);
+        pnlAtividade.add(descricao_servico);
+        descricao_servico.setColumns(10);
         
-        lbllogin=new JLabel("Login Usuario");
-        lbllogin.setBounds(10, 50, 200, 10); 
-        pnlAtividade.add(lbllogin);
+        lblvalor=new JLabel("Valor Serviço");
+        lblvalor.setBounds(300, 50, 200, 10); 
+        pnlAtividade.add(lblvalor);
         
-        login_usuario = new JTextField();
-        login_usuario.setBounds(10, 60, 200, 20);
-        pnlAtividade.add(login_usuario);
-        login_usuario.setColumns(10);
+        valor_servico = new JTextField();
+        valor_servico.setBounds(300, 60, 200, 20);
+        pnlAtividade.add(valor_servico);
+        valor_servico.setColumns(10);
         
-        lblsenha=new JLabel("Nova Senha");
-        lblsenha.setBounds(300, 10, 200, 10); 
-        pnlAtividade.add(lblsenha);
-        
-        senha_usuario = new JPasswordField();
-        senha_usuario.setBounds(300, 20, 200, 20);
-        pnlAtividade.add(senha_usuario);
-        senha_usuario.setColumns(10);
-        
-        lblCsenha=new JLabel("Confirmar Senha");
-        lblCsenha.setBounds(590, 10, 200, 10); 
-        pnlAtividade.add(lblCsenha);
-        
-        confsenha_usuario = new JPasswordField();
-        confsenha_usuario.setBounds(590, 20, 200, 20); 
-        pnlAtividade.add(confsenha_usuario);
-        confsenha_usuario.setColumns(10);
-        
-        lblemail=new JLabel("E-mail Usuario");
-        lblemail.setBounds(300, 50, 200, 10); 
-        pnlAtividade.add(lblemail);
-        
-        email_usuario = new JTextField();
-        email_usuario.setBounds(300, 60, 200, 20);
-        pnlAtividade.add(email_usuario);
-        email_usuario.setColumns(10);
-        
-        lbltelefone=new JLabel("Telefone Usuario");
-        lbltelefone.setBounds(590, 50, 200, 10); 
-        pnlAtividade.add(lbltelefone);
-        
-        telefone_usuario = new JTextField();
-        telefone_usuario.setBounds(590, 60, 200, 20);
-        pnlAtividade.add(telefone_usuario);
-        telefone_usuario.setColumns(10);
-        
-        btnConfirmar = new JButton("Editar Usuario");
+        btnConfirmar = new JButton("Editar serviço");
         btnConfirmar.setBounds(300, 120, 200, 30);
         pnlAtividade.add(btnConfirmar);
         
@@ -221,41 +189,32 @@ public class TelaServicoEditar extends JFrame{
             }
         });
         
-        FuncionarioEditarController ler = new FuncionarioEditarController();
-        FuncionarioModel inicio = new FuncionarioModel(id);
-        preencherCampos(ler.lerFuncionario(inicio));
+        ServicoEditarController ler = new ServicoEditarController();
+        ServicoModel inicio = new ServicoModel(id);
+        preencherCampos(ler.lerServico(inicio));
     }
     public void editarUsuario(int id){
-        String nome = nome_usuario.getText();
-        String login = login_usuario.getText();
-        boolean cond = senha_usuario.getText().equals(confsenha_usuario.getText());
-        String senha = senha_usuario.getText();
-        int telefone = Integer.parseInt(telefone_usuario.getText());
-        String email = email_usuario.getText();
-        if(cond){
-            FuncionarioEditarController editar = new FuncionarioEditarController();
-            editar.editarFuncionario(new FuncionarioModel(id, nome, login, senha, telefone, email));
+        try{
+            String descricao = descricao_servico.getText();
+            float valor = Float.parseFloat(valor_servico.getText());
+            ServicoEditarController editar = new ServicoEditarController();
+            editar.editarServico(new ServicoModel(id, descricao, valor));
             TelaServico telaFuncionario = new TelaServico();
             telaFuncionario.setVisible(true);
             dispose();
-        }else{
+        }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados incorretos");
-        }
+        }  
     }
-    public void preencherCampos(FuncionarioModel funcionario){
+    public void preencherCampos(ServicoModel servico){
         
-            nome_usuario.setText("");
-            login_usuario.setText("");
-            senha_usuario.setText("");
-            telefone_usuario.setText("");
-            email_usuario.setText("");
+            descricao_servico.setText("");
+            valor_servico.setText("");
+            
         
-            nome_usuario.setText(funcionario.getNome());
-            login_usuario.setText(funcionario.getLogin());
-            senha_usuario.setText(funcionario.getSenha());
-            telefone_usuario.setText(String.valueOf(funcionario.getTelefone()));
-            email_usuario.setText(funcionario.getEmail());
-
+            descricao_servico.setText(servico.getDescricao());
+            valor_servico.setText(String.valueOf(servico.getValor()));
+            
         
     }
     

@@ -38,6 +38,16 @@ public class ServicoModel {
         this.descricao = descricao;
         this.valor = valor;
     }
+
+    public ServicoModel(int id) {
+        this.id = id;
+    }
+
+    public ServicoModel(int id, String descricao, float valor) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
     
     int id;
     String descricao;

@@ -31,7 +31,7 @@ constraint fk_id_funcionario foreign key (id_funcionario) references tb_funciona
 id_funcionario int not null,
 constraint fk_id_servico foreign key (id_servico) references tb_servico(id_servico),
 id_servico int not null,
-data_reserva datetime not null
+data_reserva date not null
 );
 
 

@@ -28,11 +28,11 @@ import javax.swing.Icon;
  * @author lucas.amsantos4
  */
 public class TelaReserva extends JFrame{
-    private JPanel telaFuncionario;
+    private JPanel telaReserva;
     private JPanel panelTabela, panelAtividadeAtual;
     private JButton btnVoltar;
     private JButton btnCadastrar, btnDeletar, btnEditar, btnRefrescar;
-    private JTable tbFuncionario;
+    private JTable tbReserva;
     private JScrollPane sp;
     
     
@@ -40,25 +40,25 @@ public class TelaReserva extends JFrame{
     public TelaReserva(){
        
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Reserva");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
         
-        telaFuncionario = new JPanel();
-        telaFuncionario.setBackground(Color.WHITE);
-        setContentPane(telaFuncionario);
-        telaFuncionario.setLayout(null);
+        telaReserva = new JPanel();
+        telaReserva.setBackground(Color.WHITE);
+        setContentPane(telaReserva);
+        telaReserva.setLayout(null);
         
         panelAtividadeAtual = new JPanel();
         panelAtividadeAtual.setBackground(Color.yellow);
         panelAtividadeAtual.setBounds(20, 300, 960, 280);
-        telaFuncionario.add(panelAtividadeAtual);
+        telaReserva.add(panelAtividadeAtual);
         
         panelTabela = new JPanel(new BorderLayout());
         panelTabela.setBackground(Color.red);
         panelTabela.setBounds(20,50, 960, 200);
-        telaFuncionario.add(panelTabela);
+        telaReserva.add(panelTabela);
         
         String[][] data = {};
         String[] columnNames = {};
@@ -75,20 +75,20 @@ public class TelaReserva extends JFrame{
         }
         
         
-        tbFuncionario = new JTable(data, columnNames);
-        tbFuncionario.setFillsViewportHeight(true);
-        tbFuncionario.setBounds(100,400, 800, 50);
-        tbFuncionario.setRowHeight(30);
-        int n = tbFuncionario.getColumnCount()-1;
+        tbReserva = new JTable(data, columnNames);
+        tbReserva.setFillsViewportHeight(true);
+        tbReserva.setBounds(100,400, 800, 50);
+        tbReserva.setRowHeight(30);
+        int n = tbReserva.getColumnCount()-1;
         
         
-        sp = new JScrollPane(tbFuncionario);
+        sp = new JScrollPane(tbReserva);
         
         panelTabela.add(sp, BorderLayout.CENTER);
        
         btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(20, 600, 100, 50);
-        telaFuncionario.add(btnVoltar);
+        telaReserva.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x) {
@@ -101,7 +101,7 @@ public class TelaReserva extends JFrame{
         
         btnCadastrar = new JButton("Cadastrar funcionario");
         btnCadastrar.setBounds(20, 10, 320, 40);
-        telaFuncionario.add(btnCadastrar);
+        telaReserva.add(btnCadastrar);
         
         btnCadastrar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
@@ -115,7 +115,7 @@ public class TelaReserva extends JFrame{
         
         btnDeletar = new JButton("Deletar funcionario");
         btnDeletar.setBounds(340, 10, 319, 40);
-        telaFuncionario.add(btnDeletar);
+        telaReserva.add(btnDeletar);
         
         btnDeletar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
@@ -128,7 +128,7 @@ public class TelaReserva extends JFrame{
         
         btnEditar = new JButton("Editar funcionario");
         btnEditar.setBounds(659, 10, 320, 40);
-        telaFuncionario.add(btnEditar);
+        telaReserva.add(btnEditar);
         
         btnEditar.addActionListener(e -> {
             // Cria e mostra o ChecarEditar
@@ -137,7 +137,7 @@ public class TelaReserva extends JFrame{
         
         btnRefrescar = new JButton("Refrescar");
         btnRefrescar.setBounds(20, 250, 100, 30);
-        telaFuncionario.add(btnRefrescar);
+        telaReserva.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
