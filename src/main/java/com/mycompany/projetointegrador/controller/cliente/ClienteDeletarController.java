@@ -15,6 +15,12 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ClienteDeletarController {
+
+    /**
+     *
+     * @param cliente
+     * @return
+     */
     public boolean checarExistencia(Cliente cliente){
         
         Conexao banco = new Conexao();
@@ -33,6 +39,11 @@ public class ClienteDeletarController {
         JOptionPane.showMessageDialog(null, "Usuario Não Existe");
         return false;
     }
+
+    /**
+     *
+     * @param cliente
+     */
     public void deletarCliente(Cliente cliente){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
