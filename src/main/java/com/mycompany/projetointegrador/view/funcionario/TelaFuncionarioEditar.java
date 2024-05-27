@@ -67,7 +67,9 @@ public class TelaFuncionarioEditar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        FuncionarioLerController lerTb = new FuncionarioLerController();
+        FuncionarioTabela tabela = lerTb.lerFuncionarioModel();
+        
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();

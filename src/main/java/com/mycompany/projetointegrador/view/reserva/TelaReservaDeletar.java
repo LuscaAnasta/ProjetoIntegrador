@@ -8,8 +8,14 @@ import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioDeletarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaDeletarController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
+import com.mycompany.projetointegrador.controller.servico.ServicoDeletarController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.Reserva;
+import com.mycompany.projetointegrador.model.ReservaTabela;
+import com.mycompany.projetointegrador.model.ServicoModel;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,16 +37,16 @@ import javax.swing.JTextField;
 public class TelaReservaDeletar extends JFrame{
     
     private JPanel pnlTela, pnlAtividade, pnlTabela;
-    private JTable tbFuncionario;
+    private JTable tbReserva;
     private JScrollPane sp;
-    private JLabel lbltelefone, lblid, lblsenha;
-    private JTextField telefone_usuario, id_usuario, senha_usuario;
+    private JLabel lblidreserva, lblid, lblsenha;
+    private JTextField telefone_usuario, id_reserva, senha_usuario;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JButton btnVoltar, btnConfirmar;
     
     public TelaReservaDeletar(){
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Reserva");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -65,7 +71,8 @@ public class TelaReservaDeletar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        ReservaLerController ler = new ReservaLerController();
+        ReservaTabela tabela = ler.lerReservaModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -75,13 +82,13 @@ public class TelaReservaDeletar extends JFrame{
         }
         
         
-        tbFuncionario = new JTable(data, columnNames);
-        tbFuncionario.setFillsViewportHeight(true);
-        tbFuncionario.setBounds(100,400, 800, 50);
-        tbFuncionario.setRowHeight(30);
-        int n = tbFuncionario.getColumnCount()-1;
+        tbReserva = new JTable(data, columnNames);
+        tbReserva.setFillsViewportHeight(true);
+        tbReserva.setBounds(100,400, 800, 50);
+        tbReserva.setRowHeight(30);
+        int n = tbReserva.getColumnCount()-1;
         
-        sp = new JScrollPane(tbFuncionario);
+        sp = new JScrollPane(tbReserva);
         
         pnlTabela.add(sp, BorderLayout.CENTER);
        
@@ -99,7 +106,7 @@ public class TelaReservaDeletar extends JFrame{
             }
         });
         
-        btnTelaCadastro = new JButton("Cadastrar funcionario");
+        btnTelaCadastro = new JButton("Cadastrar reserva");
         btnTelaCadastro.setBounds(20, 10, 320, 40);
         pnlTela.add(btnTelaCadastro);
         
@@ -113,7 +120,7 @@ public class TelaReservaDeletar extends JFrame{
             }
         });
         
-        btnTelaDeletar = new JButton("Deletar funcionario");
+        btnTelaDeletar = new JButton("Deletar reserva");
         btnTelaDeletar.setBounds(340, 10, 319, 40);
         pnlTela.add(btnTelaDeletar);
         
@@ -126,7 +133,7 @@ public class TelaReservaDeletar extends JFrame{
             }
         });
         
-        btnTelaEditar = new JButton("Editar funcionario");
+        btnTelaEditar = new JButton("Editar reserva");
         btnTelaEditar.setBounds(659, 10, 320, 40);
         pnlTela.add(btnTelaEditar);
         
@@ -136,7 +143,7 @@ public class TelaReservaDeletar extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         pnlTela.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){
@@ -148,23 +155,14 @@ public class TelaReservaDeletar extends JFrame{
             }
         });
         
-        lblid=new JLabel("Id Usuario");
-        lblid.setBounds(10, 50, 200, 10); 
-        pnlAtividade.add(lblid);
+        lblidreserva=new JLabel("Id reserva");
+        lblidreserva.setBounds(10, 50, 200, 10); 
+        pnlAtividade.add(lblidreserva);
         
-        id_usuario = new JTextField();
-        id_usuario.setBounds(10, 60, 200, 20);
-        pnlAtividade.add(id_usuario);
-        id_usuario.setColumns(10);
-        
-        lblsenha=new JLabel("Senha Usuario");
-        lblsenha.setBounds(300, 50, 200, 10); 
-        pnlAtividade.add(lblsenha);
-        
-        senha_usuario = new JTextField();
-        senha_usuario.setBounds(300, 60, 200, 20);
-        pnlAtividade.add(senha_usuario);
-        senha_usuario.setColumns(10);
+        id_reserva = new JTextField();
+        id_reserva.setBounds(10, 60, 200, 20);
+        pnlAtividade.add(id_reserva);
+        id_reserva.setColumns(10);
         
         btnConfirmar = new JButton("Deletar");
         btnConfirmar.setBounds(590, 60, 200, 20);
@@ -180,12 +178,11 @@ public class TelaReservaDeletar extends JFrame{
     
     public void deletarUsuario(){
         try{
-            FuncionarioDeletarController deletar = new FuncionarioDeletarController();
-            int id = Integer.parseInt(id_usuario.getText());
-            String senha = senha_usuario.getText();
-            if(deletar.checarExistencia(new FuncionarioModel(id))){
-            deletar.deletarFuncionario(new FuncionarioModel(id, senha));
-            }
+            ReservaDeletarController deletar = new ReservaDeletarController();
+            int id = Integer.parseInt(id_reserva.getText());
+            
+            deletar.deletarServico( new Reserva(id));
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados invalidos");
         }

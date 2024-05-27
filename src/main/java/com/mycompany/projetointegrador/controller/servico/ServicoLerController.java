@@ -8,11 +8,13 @@ import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.Servico;
 import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.funcionario.TelaFuncionarioCadastro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,7 @@ import javax.swing.JOptionPane;
 public class ServicoLerController {
 
    
-    public static ServicoTabela lerServicoModel(){
+    public ServicoTabela lerServicoModel(){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
     
@@ -65,5 +67,49 @@ public class ServicoLerController {
         
     }
     
+    public ArrayList<Servico> lerDadosServico(){
+        ArrayList<Servico> servicos = new ArrayList<>();
+        Conexao banco = new Conexao();
+        banco.AbrirConexao();
+        
+        try{
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT id_servico, descricao_servico FROM tb_servico");
+            banco.resultset = lerDados.executeQuery();
+            
+            while(banco.resultset.next()){
+                servicos.add(new Servico(banco.resultset.getInt("id_servico"), banco.resultset.getString("descricao_servico")));
+            }
+            return servicos;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Algo deu Errado.");
+            System.err.println(ex);
+        }finally{
+            banco.FecharConexao();
+        }
+        return null;
+    }
     
+    public int lerIdServico(String desc){
+        
+        Conexao banco = new Conexao();
+        banco.AbrirConexao();
+        
+        try{
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT id_servico FROM tb_servico WHERE descricao_servico = ?");
+            lerDados.setString(1, desc);
+            banco.resultset = lerDados.executeQuery();
+            
+            if(banco.resultset.next()){
+                int id = banco.resultset.getInt("id_servico");
+                return id;
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Algo deu Errado.");
+            System.err.println(ex);
+        }finally{
+            banco.FecharConexao();
+        }
+        return -1;
+    }
 }

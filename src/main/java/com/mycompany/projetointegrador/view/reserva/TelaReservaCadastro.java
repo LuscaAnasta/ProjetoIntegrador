@@ -1,18 +1,29 @@
 package com.mycompany.projetointegrador.view.reserva;
 
 
-import com.mycompany.projetointegrador.view.funcionario.*;
+import com.mycompany.projetointegrador.controller.cliente.ClienteLerController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaCadastrarController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
+import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
-import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.Reserva;
+import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
+import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxCliente;
+import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxDiaSemana;
+import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxFuncionario;
+import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxHorario;
+import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxServico;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,9 +40,10 @@ import javax.swing.JTextField;
 public class TelaReservaCadastro extends JFrame{
     
     private JPanel pnlTela, pnlAtividade, pnlTabela;
-    private JTable tbFuncionario;
+    private JTable tbReserva;
     private JScrollPane sp;
-    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail; 
+    private JLabel lblfuncionario, lblcliente, lbldescricao, lbltelefone, lbldia, lblhorario;
+    private JComboBox<String> cboxCliente, cboxFuncionario, cboxServico, cboxDia, cboxHorario;
     private JButton btnVoltar, btnConfirmar;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
@@ -40,7 +52,7 @@ public class TelaReservaCadastro extends JFrame{
     public TelaReservaCadastro(){
         
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Reserva");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -65,7 +77,8 @@ public class TelaReservaCadastro extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        ReservaLerController ler = new ReservaLerController();
+        ReservaTabela tabela = ler.lerReservaModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -75,13 +88,13 @@ public class TelaReservaCadastro extends JFrame{
         }
         
         
-        tbFuncionario = new JTable(data, columnNames);
-        tbFuncionario.setFillsViewportHeight(true);
-        tbFuncionario.setBounds(100,400, 800, 50);
-        tbFuncionario.setRowHeight(30);
-        int n = tbFuncionario.getColumnCount()-1;
+        tbReserva = new JTable(data, columnNames);
+        tbReserva.setFillsViewportHeight(true);
+        tbReserva.setBounds(100,400, 800, 50);
+        tbReserva.setRowHeight(30);
+        int n = tbReserva.getColumnCount()-1;
         
-        sp = new JScrollPane(tbFuncionario);
+        sp = new JScrollPane(tbReserva);
         
         pnlTabela.add(sp, BorderLayout.CENTER);
        
@@ -99,7 +112,7 @@ public class TelaReservaCadastro extends JFrame{
             }
         });
         
-        btnTelaCadastro = new JButton("Cadastrar funcionario");
+        btnTelaCadastro = new JButton("Cadastrar reserva");
         btnTelaCadastro.setBounds(20, 10, 320, 40);
         pnlTela.add(btnTelaCadastro);
         
@@ -113,7 +126,7 @@ public class TelaReservaCadastro extends JFrame{
             }
         });
         
-        btnTelaDeletar = new JButton("Deletar funcionario");
+        btnTelaDeletar = new JButton("Deletar reserva");
         btnTelaDeletar.setBounds(340, 10, 319, 40);
         pnlTela.add(btnTelaDeletar);
         
@@ -126,7 +139,7 @@ public class TelaReservaCadastro extends JFrame{
             }
         });
         
-        btnTelaEditar = new JButton("Editar funcionario");
+        btnTelaEditar = new JButton("Editar reserva");
         btnTelaEditar.setBounds(659, 10, 320, 40);
         pnlTela.add(btnTelaEditar);
         
@@ -136,7 +149,7 @@ public class TelaReservaCadastro extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         pnlTela.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){
@@ -148,61 +161,46 @@ public class TelaReservaCadastro extends JFrame{
             }
         });
         
-        lblnome=new JLabel("Nome Usuario");
-        lblnome.setBounds(10, 10, 200, 10); 
-        pnlAtividade.add(lblnome);
+        lblfuncionario=new JLabel("Funcionario");
+        lblfuncionario.setBounds(10, 10, 200, 10); 
+        pnlAtividade.add(lblfuncionario);
         
-        nome_usuario = new JTextField();
-        nome_usuario.setBounds(10, 20, 200, 20);
-        pnlAtividade.add(nome_usuario);
-        nome_usuario.setColumns(10);
+        cboxFuncionario = new BoxFuncionario();
+        pnlAtividade.add(cboxFuncionario);
         
-        lbllogin=new JLabel("Login Usuario");
-        lbllogin.setBounds(10, 50, 200, 10); 
-        pnlAtividade.add(lbllogin);
         
-        login_usuario = new JTextField();
-        login_usuario.setBounds(10, 60, 200, 20);
-        pnlAtividade.add(login_usuario);
-        login_usuario.setColumns(10);
+        lbldia=new JLabel("Dia da reserva");
+        lbldia.setBounds(10, 50, 200, 10); 
+        pnlAtividade.add(lbldia);
         
-        lblsenha=new JLabel("Nova Senha");
-        lblsenha.setBounds(300, 10, 200, 10); 
-        pnlAtividade.add(lblsenha);
+        cboxDia = new BoxDiaSemana();
+        pnlAtividade.add(cboxDia);
         
-        senha_usuario = new JPasswordField();
-        senha_usuario.setBounds(300, 20, 200, 20);
-        pnlAtividade.add(senha_usuario);
-        senha_usuario.setColumns(10);
         
-        lblCsenha=new JLabel("Confirmar Senha");
-        lblCsenha.setBounds(590, 10, 200, 10); 
-        pnlAtividade.add(lblCsenha);
+        lblcliente=new JLabel("Cliente");
+        lblcliente.setBounds(300, 10, 200, 10); 
+        pnlAtividade.add(lblcliente);
         
-        confsenha_usuario = new JPasswordField();
-        confsenha_usuario.setBounds(590, 20, 200, 20); 
-        pnlAtividade.add(confsenha_usuario);
-        confsenha_usuario.setColumns(10);
+        cboxCliente = new BoxCliente();
+        pnlAtividade.add(cboxCliente);
         
-        lblemail=new JLabel("E-mail Usuario");
-        lblemail.setBounds(300, 50, 200, 10); 
-        pnlAtividade.add(lblemail);
         
-        email_usuario = new JTextField();
-        email_usuario.setBounds(300, 60, 200, 20);
-        pnlAtividade.add(email_usuario);
-        email_usuario.setColumns(10);
+        lbldescricao=new JLabel("Serviço");
+        lbldescricao.setBounds(590, 10, 200, 10); 
+        pnlAtividade.add(lbldescricao);
         
-        lbltelefone=new JLabel("Telefone Usuario");
-        lbltelefone.setBounds(590, 50, 200, 10); 
-        pnlAtividade.add(lbltelefone);
+        cboxServico = new BoxServico();
+        pnlAtividade.add(cboxServico);
         
-        telefone_usuario = new JTextField();
-        telefone_usuario.setBounds(590, 60, 200, 20);
-        pnlAtividade.add(telefone_usuario);
-        telefone_usuario.setColumns(10);
         
-        btnConfirmar = new JButton("Cadastrar");
+        lblhorario=new JLabel("Horario da reserva");
+        lblhorario.setBounds(300, 50, 200, 10); 
+        pnlAtividade.add(lblhorario);
+        
+        cboxHorario = new BoxHorario();
+        pnlAtividade.add(cboxHorario);
+        
+        btnConfirmar = new JButton("Reservar horario");
         btnConfirmar.setBounds(300, 120, 200, 30);
         pnlAtividade.add(btnConfirmar);
         
@@ -220,19 +218,28 @@ public class TelaReservaCadastro extends JFrame{
         
     }
     public void cadastrar(){
-        try{
-        FuncionarioCadastrarController controller = new FuncionarioCadastrarController();
-        String nome = nome_usuario.getText();
-        String login = login_usuario.getText();
-        boolean cond = senha_usuario.getText().equals(confsenha_usuario.getText());
-        String senha = senha_usuario.getText();
-        int telefone = Integer.parseInt(telefone_usuario.getText());
-        String email = email_usuario.getText();
-       
-        controller.cadastrarFuncionario(new FuncionarioModel(nome, login, senha, telefone, email));
-        
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Dados Invalidos");
+        if(cboxFuncionario.getSelectedIndex() != 0){
+            try{
+                ReservaCadastrarController controller = new ReservaCadastrarController();
+                FuncionarioLerController lerFuncionario = new FuncionarioLerController();
+                ServicoLerController lerServico = new ServicoLerController();
+                ClienteLerController lerCliente = new ClienteLerController();
+                
+                String funcionario = String.valueOf(cboxFuncionario.getSelectedItem());
+                String cliente = String.valueOf(cboxCliente.getSelectedItem());
+                String servico = String.valueOf(cboxServico.getSelectedItem());
+                String dia = String.valueOf(cboxDia.getSelectedItem());
+                String horario = String.valueOf(cboxHorario.getSelectedItem());
+                
+                
+                controller.cadastrarReserva(new Reserva(lerCliente.lerIdCliente(cliente),
+                        lerFuncionario.lerIdFuncionario(funcionario), lerServico.lerIdServico(servico), horario, dia));
+
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Dados Invalidos");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Selecione todos os campos");
         }
     }
     

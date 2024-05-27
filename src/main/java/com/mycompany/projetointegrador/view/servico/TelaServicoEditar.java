@@ -72,7 +72,8 @@ public class TelaServicoEditar extends JFrame{
         String[][] data = {};
         String[] columnNames = {};
         
-        ServicoTabela tabela = ServicoLerController.lerServicoModel();
+        ServicoLerController lerTb = new ServicoLerController();
+        ServicoTabela tabela = lerTb.lerServicoModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();

@@ -42,7 +42,7 @@ public class TelaServico extends JFrame{
     public TelaServico(){
        
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Serviço");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -66,8 +66,8 @@ public class TelaServico extends JFrame{
         String[] columnNames = {};
         
         
-        
-        ServicoTabela tabela = ServicoLerController.lerServicoModel();
+        ServicoLerController ler = new ServicoLerController();
+        ServicoTabela tabela = ler.lerServicoModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -101,7 +101,7 @@ public class TelaServico extends JFrame{
             }
         });
         
-        btnCadastrar = new JButton("Cadastrar funcionario");
+        btnCadastrar = new JButton("Cadastrar serviço");
         btnCadastrar.setBounds(20, 10, 320, 40);
         telaServico.add(btnCadastrar);
         
@@ -115,7 +115,7 @@ public class TelaServico extends JFrame{
             }
         });
         
-        btnDeletar = new JButton("Deletar funcionario");
+        btnDeletar = new JButton("Deletar serviço");
         btnDeletar.setBounds(340, 10, 319, 40);
         telaServico.add(btnDeletar);
         
@@ -128,7 +128,7 @@ public class TelaServico extends JFrame{
             }
         });
         
-        btnEditar = new JButton("Editar funcionario");
+        btnEditar = new JButton("Editar serviço");
         btnEditar.setBounds(659, 10, 320, 40);
         telaServico.add(btnEditar);
         
@@ -138,7 +138,7 @@ public class TelaServico extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         telaServico.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

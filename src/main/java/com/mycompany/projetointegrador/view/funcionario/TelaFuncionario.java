@@ -63,8 +63,8 @@ public class TelaFuncionario extends JFrame{
         String[] columnNames = {};
         
         
-        
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        FuncionarioLerController lerTb = new FuncionarioLerController();
+        FuncionarioTabela tabela = lerTb.lerFuncionarioModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -135,7 +135,7 @@ public class TelaFuncionario extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         telaFuncionario.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

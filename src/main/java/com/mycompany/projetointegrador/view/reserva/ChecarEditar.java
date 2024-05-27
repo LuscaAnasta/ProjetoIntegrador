@@ -6,7 +6,9 @@ package com.mycompany.projetointegrador.view.reserva;
 
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaEditarController;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Reserva;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -49,8 +51,8 @@ public class ChecarEditar extends JDialog{
                 
                 try{
                     int id = Integer.parseInt(textField.getText());
-                    FuncionarioEditarController verificar = new FuncionarioEditarController();
-                    if(verificar.checarExistencia(new FuncionarioModel(id))){
+                    ReservaEditarController verificar = new ReservaEditarController();
+                    if(verificar.checarExistencia(new Reserva(id))){
                         TelaReservaEditar telaEditar = new TelaReservaEditar(id);
                         telaEditar.setVisible(true);
                         frame.dispose();

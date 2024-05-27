@@ -5,12 +5,15 @@
 package com.mycompany.projetointegrador.controller.funcionario;
 
 import com.mycompany.projetointegrador.Conexao;
+import com.mycompany.projetointegrador.model.Cliente;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.funcionario.TelaFuncionarioCadastro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,13 +21,8 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class FuncionarioLerController {
-
-    private final TelaFuncionarioCadastro telaFuncionarioCadastro;
     
-    public FuncionarioLerController(TelaFuncionarioCadastro telaFuncionarioCadastro){
-        this.telaFuncionarioCadastro = telaFuncionarioCadastro;
-    }
-    public static FuncionarioTabela lerFuncionarioModel(){
+    public FuncionarioTabela lerFuncionarioModel(){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
     
@@ -67,5 +65,49 @@ public class FuncionarioLerController {
         
     }
     
+    public ArrayList<Funcionario> lerNomeFuncionario(){
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        Conexao banco = new Conexao();
+        banco.AbrirConexao();
+        
+        try{
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT id_funcionario, nome_funcionario FROM tb_funcionario");
+            banco.resultset = lerDados.executeQuery();
+            
+            while(banco.resultset.next()){
+                funcionarios.add(new Funcionario(banco.resultset.getInt("id_funcionario"), banco.resultset.getString("nome_funcionario")));
+            }
+            return funcionarios;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Algo deu Errado.");
+            System.err.println(ex);
+        }finally{
+            banco.FecharConexao();
+        }
+        return null;
+    }
+    
+    public int lerIdFuncionario(String nome){
+        
+        Conexao banco = new Conexao();
+        banco.AbrirConexao();
+        
+        try{
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT id_funcionario FROM tb_funcionario WHERE nome_funcionario = ?");
+            lerDados.setString(1, nome);
+            banco.resultset = lerDados.executeQuery();
+            
+            if(banco.resultset.next()){
+                int id =  banco.resultset.getInt("id_funcionario");
+                return id;
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Algo deu Errado.");
+            System.err.println(ex);
+        }finally{
+            banco.FecharConexao();
+        }
+        return -1;
+    }
     
 }

@@ -138,7 +138,7 @@ public class TelaCliente extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         telaCliente.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

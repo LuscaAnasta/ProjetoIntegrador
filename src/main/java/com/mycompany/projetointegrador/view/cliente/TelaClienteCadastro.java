@@ -44,7 +44,7 @@ public class TelaClienteCadastro extends JFrame{
     public TelaClienteCadastro(){
         
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -103,7 +103,7 @@ public class TelaClienteCadastro extends JFrame{
             }
         });
         
-        btnTelaCadastro = new JButton("Cadastrar funcionario");
+        btnTelaCadastro = new JButton("Cadastrar cliente");
         btnTelaCadastro.setBounds(20, 10, 320, 40);
         pnlTela.add(btnTelaCadastro);
         
@@ -117,7 +117,7 @@ public class TelaClienteCadastro extends JFrame{
             }
         });
         
-        btnTelaDeletar = new JButton("Deletar funcionario");
+        btnTelaDeletar = new JButton("Deletar cliente");
         btnTelaDeletar.setBounds(340, 10, 319, 40);
         pnlTela.add(btnTelaDeletar);
         
@@ -130,7 +130,7 @@ public class TelaClienteCadastro extends JFrame{
             }
         });
         
-        btnTelaEditar = new JButton("Editar funcionario");
+        btnTelaEditar = new JButton("Editar cliente");
         btnTelaEditar.setBounds(659, 10, 320, 40);
         pnlTela.add(btnTelaEditar);
         
@@ -140,7 +140,7 @@ public class TelaClienteCadastro extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         pnlTela.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

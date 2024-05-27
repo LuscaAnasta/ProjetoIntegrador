@@ -6,7 +6,9 @@ package com.mycompany.projetointegrador.view.reserva;
 
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
+import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
+import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -64,8 +66,8 @@ public class TelaReserva extends JFrame{
         String[] columnNames = {};
         
         
-        
-        FuncionarioTabela tabela = FuncionarioLerController.lerFuncionarioModel();
+        ReservaLerController ler = new ReservaLerController();
+        ReservaTabela tabela = ler.lerReservaModel();
         if(tabela != null){
             tabela.getDados();
             data = tabela.getDados();
@@ -99,7 +101,7 @@ public class TelaReserva extends JFrame{
             }
         });
         
-        btnCadastrar = new JButton("Cadastrar funcionario");
+        btnCadastrar = new JButton("Cadastrar reserva");
         btnCadastrar.setBounds(20, 10, 320, 40);
         telaReserva.add(btnCadastrar);
         
@@ -113,7 +115,7 @@ public class TelaReserva extends JFrame{
             }
         });
         
-        btnDeletar = new JButton("Deletar funcionario");
+        btnDeletar = new JButton("Deletar reserva");
         btnDeletar.setBounds(340, 10, 319, 40);
         telaReserva.add(btnDeletar);
         
@@ -126,7 +128,7 @@ public class TelaReserva extends JFrame{
             }
         });
         
-        btnEditar = new JButton("Editar funcionario");
+        btnEditar = new JButton("Editar reserva");
         btnEditar.setBounds(659, 10, 320, 40);
         telaReserva.add(btnEditar);
         
@@ -136,7 +138,7 @@ public class TelaReserva extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         telaReserva.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

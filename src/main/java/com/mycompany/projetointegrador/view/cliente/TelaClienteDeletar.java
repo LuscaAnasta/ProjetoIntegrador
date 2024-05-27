@@ -44,7 +44,7 @@ public class TelaClienteDeletar extends JFrame{
     
     public TelaClienteDeletar(){
         setResizable(false);
-        setTitle("Painel Funcionario");
+        setTitle("Painel Cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         setLocationRelativeTo(null);
@@ -140,7 +140,7 @@ public class TelaClienteDeletar extends JFrame{
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 100, 30);
+        btnRefrescar.setBounds(20, 250, 120, 30);
         pnlTela.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){
