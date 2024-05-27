@@ -5,8 +5,7 @@
 package com.mycompany.projetointegrador.controller.servico;
 
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.ClienteModel;
-import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.Servico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author lucas
  */
 public class ServicoCadastrarController {
-    public void cadastrarServico(ServicoModel servico){
+    public void cadastrarServico(Servico servico){
         Conexao bancodds = new Conexao();
         bancodds.AbrirConexao();
 

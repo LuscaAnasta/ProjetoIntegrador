@@ -5,7 +5,7 @@
 package com.mycompany.projetointegrador.controller.funcionario;
 
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class FuncionarioCadastrarController {
-    public static void cadastrarFuncionario(FuncionarioModel funcionarioModel){
+    public static void cadastrarFuncionario(Funcionario funcionarioModel){
         Conexao bancodds = new Conexao();
         bancodds.AbrirConexao();
 

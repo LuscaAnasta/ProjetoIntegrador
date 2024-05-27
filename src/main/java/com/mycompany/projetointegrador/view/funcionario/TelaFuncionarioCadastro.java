@@ -3,7 +3,7 @@ package com.mycompany.projetointegrador.view.funcionario;
 
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -230,7 +230,7 @@ public class TelaFuncionarioCadastro extends JFrame{
         int telefone = Integer.parseInt(telefone_usuario.getText());
         String email = email_usuario.getText();
        
-        controller.cadastrarFuncionario(new FuncionarioModel(nome, login, senha, telefone, email));
+        controller.cadastrarFuncionario(new Funcionario(nome, login, senha, telefone, email));
         
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados Invalidos");

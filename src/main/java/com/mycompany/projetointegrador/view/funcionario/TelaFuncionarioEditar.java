@@ -6,7 +6,7 @@ package com.mycompany.projetointegrador.view.funcionario;
 
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -223,7 +223,7 @@ public class TelaFuncionarioEditar extends JFrame{
         });
         
         FuncionarioEditarController ler = new FuncionarioEditarController();
-        FuncionarioModel inicio = new FuncionarioModel(id);
+        Funcionario inicio = new Funcionario(id);
         preencherCampos(ler.lerFuncionario(inicio));
     }
     public void editarUsuario(int id){
@@ -235,7 +235,7 @@ public class TelaFuncionarioEditar extends JFrame{
         String email = email_usuario.getText();
         if(cond){
             FuncionarioEditarController editar = new FuncionarioEditarController();
-            editar.editarFuncionario(new FuncionarioModel(id, nome, login, senha, telefone, email));
+            editar.editarFuncionario(new Funcionario(id, nome, login, senha, telefone, email));
             TelaFuncionario telaFuncionario = new TelaFuncionario();
             telaFuncionario.setVisible(true);
             dispose();
@@ -243,7 +243,7 @@ public class TelaFuncionarioEditar extends JFrame{
             JOptionPane.showMessageDialog(null, "Dados incorretos");
         }
     }
-    public void preencherCampos(FuncionarioModel funcionario){
+    public void preencherCampos(Funcionario funcionario){
         
             nome_usuario.setText("");
             login_usuario.setText("");

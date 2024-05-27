@@ -5,7 +5,7 @@
 package com.mycompany.projetointegrador;
 
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLoginController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -76,7 +76,7 @@ public class TelaLogin extends JFrame{
         String senha = txtSenha.getText();
         
         FuncionarioLoginController logar = new FuncionarioLoginController();
-        return logar.logar(new FuncionarioModel(login, senha));
+        return logar.logar(new Funcionario(login, senha));
         
         
     }

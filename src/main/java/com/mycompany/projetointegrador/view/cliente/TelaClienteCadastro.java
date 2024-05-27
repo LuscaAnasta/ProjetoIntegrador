@@ -6,9 +6,8 @@ import com.mycompany.projetointegrador.controller.cliente.ClienteLerController;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.ClienteModel;
+import com.mycompany.projetointegrador.model.Cliente;
 import com.mycompany.projetointegrador.model.ClienteTabela;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -204,7 +203,7 @@ public class TelaClienteCadastro extends JFrame{
             String nome = nome_usuario.getText();
             int telefone = Integer.parseInt(telefone_usuario.getText());
             String cpf = cpf_usuario.getText();
-            controller.cadastrarCliente(new ClienteModel(nome, telefone, cpf));
+            controller.cadastrarCliente(new Cliente(nome, telefone, cpf));
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados Invalidos");
         }

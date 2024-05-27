@@ -5,7 +5,7 @@
 package com.mycompany.projetointegrador.controller.funcionario;
 
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author lucas
  */
 public class FuncionarioLoginController {
-    public boolean logar(FuncionarioModel funcionario){
+    public boolean logar(Funcionario funcionario){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();

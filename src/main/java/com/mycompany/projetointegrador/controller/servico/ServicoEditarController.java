@@ -6,8 +6,8 @@ package com.mycompany.projetointegrador.controller.servico;
 
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
-import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.Servico;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ServicoEditarController {
-    public boolean checarExistencia(ServicoModel servico){
+    public boolean checarExistencia(Servico servico){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
@@ -36,7 +36,7 @@ public class ServicoEditarController {
         return false;
     }
     
-    public ServicoModel lerServico(ServicoModel servico){
+    public Servico lerServico(Servico servico){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         
@@ -52,7 +52,7 @@ public class ServicoEditarController {
                 float valor = banco.resultset.getFloat("valor_servico");
                 
                 
-                return new ServicoModel(descricao, valor);
+                return new Servico(descricao, valor);
             }
             
         }catch(Exception ex){
@@ -62,7 +62,7 @@ public class ServicoEditarController {
         return null;
     }
     
-    public void editarServico(ServicoModel servico){
+    public void editarServico(Servico servico){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         

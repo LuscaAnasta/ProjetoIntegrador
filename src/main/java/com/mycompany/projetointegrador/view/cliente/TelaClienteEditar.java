@@ -9,9 +9,8 @@ import com.mycompany.projetointegrador.controller.cliente.ClienteLerController;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.ClienteModel;
+import com.mycompany.projetointegrador.model.Cliente;
 import com.mycompany.projetointegrador.model.ClienteTabela;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -198,7 +197,7 @@ public class TelaClienteEditar extends JFrame{
             }
         });
         ClienteEditarController ler = new ClienteEditarController();
-        ClienteModel inicio = new ClienteModel(id);
+        Cliente inicio = new Cliente(id);
         preencherCampos(ler.lerCliente(inicio));
     }
     
@@ -208,13 +207,13 @@ public class TelaClienteEditar extends JFrame{
         String cpf = cpf_usuario.getText();
         
         ClienteEditarController editar = new ClienteEditarController();
-        editar.editarCliente(new ClienteModel(id, nome, telefone, cpf));
+        editar.editarCliente(new Cliente(id, nome, telefone, cpf));
         TelaCliente telaFuncionario = new TelaCliente();
         telaFuncionario.setVisible(true);
         dispose();
     }
     
-    public void preencherCampos(ClienteModel cliente){
+    public void preencherCampos(Cliente cliente){
         
             nome_usuario.setText("");
             telefone_usuario.setText("");

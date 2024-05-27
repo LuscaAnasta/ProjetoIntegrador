@@ -10,9 +10,8 @@ import com.mycompany.projetointegrador.controller.funcionario.FuncionarioDeletar
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.controller.servico.ServicoDeletarController;
 import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
-import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.Servico;
 import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -179,7 +178,7 @@ public class TelaServicoDeletar extends JFrame{
             ServicoDeletarController deletar = new ServicoDeletarController();
             int id = Integer.parseInt(id_servico.getText());
             
-            deletar.deletarServico( new ServicoModel(id));
+            deletar.deletarServico( new Servico(id));
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados invalidos");

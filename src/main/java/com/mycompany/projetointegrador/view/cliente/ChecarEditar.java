@@ -7,8 +7,7 @@ package com.mycompany.projetointegrador.view.cliente;
 import com.mycompany.projetointegrador.controller.cliente.ClienteEditarController;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
-import com.mycompany.projetointegrador.model.ClienteModel;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Cliente;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -52,7 +51,7 @@ public class ChecarEditar extends JDialog{
                 try{
                     int id = Integer.parseInt(textField.getText());
                     ClienteEditarController verificar = new ClienteEditarController();
-                    if(verificar.checarExistencia(new ClienteModel(id))){
+                    if(verificar.checarExistencia(new Cliente(id))){
                         TelaClienteEditar telaEditar = new TelaClienteEditar(id);
                         telaEditar.setVisible(true);
                         frame.dispose();

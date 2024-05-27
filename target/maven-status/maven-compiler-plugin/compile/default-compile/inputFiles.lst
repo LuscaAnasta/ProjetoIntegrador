@@ -6,18 +6,15 @@
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/FuncionarioTabela.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/TelaFuncionarioEditar.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/reserva/ReservaDeletarController.java
-/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/ReservaModel.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/servico/ServicoEditarController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/servico/TelaServicoCadastro.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/servico/TelaServicoDeletar.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/reserva/caixasselecao/BoxDiaSemana.java
-/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/ServicoModel.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/funcionario/ChecarEditar.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/reserva/caixasselecao/BoxServico.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/servico/TelaServico.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/ReservaTabela.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioDeletarController.java
-/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/ClienteModel.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/reserva/TelaReservaCadastro.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/TelaLogin.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/Servico.java
@@ -46,7 +43,6 @@
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/TelaInicial.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/servico/ServicoDeletarController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/view/reserva/caixasselecao/BoxFuncionario.java
-/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/FuncionarioModel.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/Cliente.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioLoginController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/cliente/ClienteLerController.java

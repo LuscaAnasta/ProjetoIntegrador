@@ -5,8 +5,7 @@
 package com.mycompany.projetointegrador.controller.servico;
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
-import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.Servico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +33,7 @@ public class ServicoDeletarController {
         JOptionPane.showMessageDialog(null, "Serviço não existe");
         return false;
     }
-    public void deletarServico(ServicoModel servico){
+    public void deletarServico(Servico servico){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         if(checarExistencia(servico.getId())){

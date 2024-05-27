@@ -50,7 +50,22 @@ public class Cliente {
     public Cliente(int id) {
         this.id = id;
     }
+    
+    public Cliente(int id, String nome, int telefone, String cpf) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
+    
+    
 
+    public Cliente(String nome, int telefone, String cpf) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
+   
     
     private int id;
     private String nome;

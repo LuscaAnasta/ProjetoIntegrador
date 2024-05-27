@@ -6,7 +6,6 @@ package com.mycompany.projetointegrador.controller.servico;
 
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.model.Servico;
 import com.mycompany.projetointegrador.model.ServicoTabela;

@@ -7,7 +7,6 @@ package com.mycompany.projetointegrador.view.reserva;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
 import com.mycompany.projetointegrador.controller.reserva.ReservaEditarController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.Reserva;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.FlowLayout;

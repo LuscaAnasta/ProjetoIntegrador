@@ -6,9 +6,7 @@ package com.mycompany.projetointegrador.controller.reserva;
 
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.Reserva;
-import com.mycompany.projetointegrador.model.ReservaModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;

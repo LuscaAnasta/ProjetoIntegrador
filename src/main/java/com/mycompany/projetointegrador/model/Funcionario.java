@@ -66,7 +66,30 @@ public class Funcionario<ArrayList> {
     public Funcionario(int id) {
         this.id = id;
     }
+    
 
+    public Funcionario(String nome, String login, String senha, int telefone, String email) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+    public Funcionario(int id, String nome, String login, String senha, int telefone, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.email = email;
+    }
+    
+
+    public Funcionario(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
     
     private int id;
     private String nome; 

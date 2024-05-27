@@ -38,12 +38,19 @@ public class Servico<ArrayList> {
         this.id = id;
         this.descricao = descricao;
     }
-
     
-    
-
     public Servico(int id) {
         this.id = id;
+    }
+    
+    public Servico(String descricao, float valor) {
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Servico(int id, String descricao, float valor) {
+        this.id = id;
+        this.descricao = descricao;
     }
     int id;
     String descricao;

@@ -11,11 +11,9 @@ import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerCont
 import com.mycompany.projetointegrador.controller.reserva.ReservaDeletarController;
 import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
 import com.mycompany.projetointegrador.controller.servico.ServicoDeletarController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.model.Reserva;
 import com.mycompany.projetointegrador.model.ReservaTabela;
-import com.mycompany.projetointegrador.model.ServicoModel;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -5,7 +5,7 @@
 package com.mycompany.projetointegrador.view.funcionario;
 
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -49,7 +49,7 @@ public class ChecarEditar extends JDialog{
                 try{
                     int id = Integer.parseInt(textField.getText());
                     FuncionarioEditarController verificar = new FuncionarioEditarController();
-                    if(verificar.checarExistencia(new FuncionarioModel(id))){
+                    if(verificar.checarExistencia(new Funcionario(id))){
                         TelaFuncionarioEditar telaEditar = new TelaFuncionarioEditar(id);
                         telaEditar.setVisible(true);
                         frame.dispose();

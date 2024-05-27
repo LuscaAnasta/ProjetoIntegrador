@@ -7,7 +7,7 @@ package com.mycompany.projetointegrador.view.funcionario;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioCadastrarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioDeletarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -184,8 +184,8 @@ public class TelaFuncionarioDeletar extends JFrame{
             FuncionarioDeletarController deletar = new FuncionarioDeletarController();
             int id = Integer.parseInt(id_usuario.getText());
             String senha = senha_usuario.getText();
-            if(deletar.checarExistencia(new FuncionarioModel(id))){
-            deletar.deletarFuncionario(new FuncionarioModel(id, senha));
+            if(deletar.checarExistencia(new Funcionario(id))){
+            deletar.deletarFuncionario(new Funcionario(id, senha));
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados invalidos");

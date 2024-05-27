@@ -5,8 +5,7 @@
 package com.mycompany.projetointegrador.controller.cliente;
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.ClienteModel;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ClienteDeletarController {
-    public boolean checarExistencia(ClienteModel cliente){
+    public boolean checarExistencia(Cliente cliente){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
@@ -34,7 +33,7 @@ public class ClienteDeletarController {
         JOptionPane.showMessageDialog(null, "Usuario Não Existe");
         return false;
     }
-    public void deletarCliente(ClienteModel cliente){
+    public void deletarCliente(Cliente cliente){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         

@@ -9,9 +9,8 @@ import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarC
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.controller.servico.ServicoEditarController;
 import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
-import com.mycompany.projetointegrador.model.ServicoModel;
+import com.mycompany.projetointegrador.model.Servico;
 import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -191,7 +190,7 @@ public class TelaServicoEditar extends JFrame{
         });
         
         ServicoEditarController ler = new ServicoEditarController();
-        ServicoModel inicio = new ServicoModel(id);
+        Servico inicio = new Servico(id);
         preencherCampos(ler.lerServico(inicio));
     }
     public void editarUsuario(int id){
@@ -199,7 +198,7 @@ public class TelaServicoEditar extends JFrame{
             String descricao = descricao_servico.getText();
             float valor = Float.parseFloat(valor_servico.getText());
             ServicoEditarController editar = new ServicoEditarController();
-            editar.editarServico(new ServicoModel(id, descricao, valor));
+            editar.editarServico(new Servico(id, descricao, valor));
             TelaServico telaFuncionario = new TelaServico();
             telaFuncionario.setVisible(true);
             dispose();
@@ -207,7 +206,7 @@ public class TelaServicoEditar extends JFrame{
             JOptionPane.showMessageDialog(null, "Dados incorretos");
         }  
     }
-    public void preencherCampos(ServicoModel servico){
+    public void preencherCampos(Servico servico){
         
             descricao_servico.setText("");
             valor_servico.setText("");

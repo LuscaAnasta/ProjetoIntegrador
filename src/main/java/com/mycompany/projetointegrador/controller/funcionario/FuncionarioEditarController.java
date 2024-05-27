@@ -5,7 +5,7 @@
 package com.mycompany.projetointegrador.controller.funcionario;
 
 import com.mycompany.projetointegrador.Conexao;
-import com.mycompany.projetointegrador.model.FuncionarioModel;
+import com.mycompany.projetointegrador.model.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class FuncionarioEditarController {
-    public boolean checarExistencia(FuncionarioModel funcionario){
+    public boolean checarExistencia(Funcionario funcionario){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
@@ -34,7 +34,7 @@ public class FuncionarioEditarController {
         return false;
     }
     
-    public FuncionarioModel lerFuncionario(FuncionarioModel funcionario){
+    public Funcionario lerFuncionario(Funcionario funcionario){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         
@@ -52,7 +52,7 @@ public class FuncionarioEditarController {
                 int telefone = banco.resultset.getInt("tel_funcionario");
                 String email = banco.resultset.getString("email_funcionario");
                 
-                return new FuncionarioModel(nome, login, senha, telefone, email);
+                return new Funcionario(nome, login, senha, telefone, email);
             }
             
         }catch(Exception ex){
@@ -62,7 +62,7 @@ public class FuncionarioEditarController {
         return null;
     }
     
-    public void editarFuncionario(FuncionarioModel funcionario){
+    public void editarFuncionario(Funcionario funcionario){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         
