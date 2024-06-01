@@ -9,7 +9,6 @@ import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarC
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.controller.servico.ServicoEditarController;
 import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
-import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.model.Servico;
 import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;

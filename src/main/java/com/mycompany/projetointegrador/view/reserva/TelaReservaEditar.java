@@ -12,7 +12,6 @@ import com.mycompany.projetointegrador.controller.reserva.ReservaCadastrarContro
 import com.mycompany.projetointegrador.controller.reserva.ReservaEditarController;
 import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
 import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
-import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.model.Reserva;
 import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;

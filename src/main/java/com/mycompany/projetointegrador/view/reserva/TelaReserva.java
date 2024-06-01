@@ -7,7 +7,6 @@ package com.mycompany.projetointegrador.view.reserva;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
-import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;

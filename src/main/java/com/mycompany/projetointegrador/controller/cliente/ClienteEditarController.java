@@ -16,25 +16,7 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ClienteEditarController {
-    public boolean checarExistencia(Cliente cliente){
-        
-        Conexao banco = new Conexao();
-        banco.AbrirConexao();
-        try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_cliente WHERE id_cliente = ? ");
-            lerDados.setInt(1, cliente.getId());
-            banco.resultset = lerDados.executeQuery();
-            if(banco.resultset.isBeforeFirst()){
-                banco.FecharConexao(); 
-                return true;
-            }
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro");
-        }finally{ banco.FecharConexao(); }
-        JOptionPane.showMessageDialog(null, "Cliente Não Existe");
-        return false;
-    }
-    
+ 
     public Cliente lerCliente(Cliente cliente){
         Conexao banco = new Conexao();
         banco.AbrirConexao();

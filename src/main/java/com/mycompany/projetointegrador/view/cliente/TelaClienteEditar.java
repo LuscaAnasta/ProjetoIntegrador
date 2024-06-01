@@ -10,7 +10,6 @@ import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioEditarController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.model.Cliente;
-import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -128,8 +127,6 @@ public class TelaClienteEditar extends JDialog{
         
         ClienteEditarController editar = new ClienteEditarController();
         editar.editarCliente(new Cliente(id, nome, telefone, cpf));
-        TelaCliente telaFuncionario = new TelaCliente();
-        telaFuncionario.setVisible(true);
         dispose();
     }
     
