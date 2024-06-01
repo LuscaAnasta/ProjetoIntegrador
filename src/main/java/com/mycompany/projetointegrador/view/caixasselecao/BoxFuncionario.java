@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projetointegrador.view.reserva.caixasselecao;
+package com.mycompany.projetointegrador.view.caixasselecao;
 
 import com.mycompany.projetointegrador.controller.cliente.ClienteLerController;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
@@ -23,7 +23,7 @@ public class BoxFuncionario extends JComboBox<String>{
         ArrayList<Funcionario> funcionarios = ler.lerNomeFuncionario();
         addItem("Selecione");
         for (Funcionario funcionario : funcionarios) {
-            addItem(funcionario.getNome());
+            addItem(funcionario.getSenha());
         }
         
     }

@@ -8,7 +8,7 @@ package com.mycompany.projetointegrador.model;
  *
  * @author lucas
  */
-public class Funcionario<ArrayList> {
+public class Funcionario {
 
     public int getId() {
         return id;
@@ -58,9 +58,9 @@ public class Funcionario<ArrayList> {
         this.email = email;
     }
 
-    public Funcionario(int id, String nome) {
+    public Funcionario(int id, String senha){
         this.id = id;
-        this.nome = nome;
+        this.senha = senha;
     }
 
     public Funcionario(int id) {

@@ -31,7 +31,7 @@ public class ReservaLerController {
         linhas.next(); // Mova o cursor para a primeira linha
         int nLinhas = linhas.getInt(1); // Acesse a primeira coluna pela posição do índice
         
-        PreparedStatement lerDados = banco.con.prepareStatement("select tb_reserva.id_reserva, tb_reserva.id_cliente, tb_cliente.nome_cliente,"
+        PreparedStatement lerDados = banco.con.prepareStatement("select tb_reserva.id_reserva, tb_cliente.nome_cliente, tb_cliente.cpf_cliente,"
                 + " tb_reserva.id_funcionario, tb_funcionario.nome_funcionario, tb_servico.descricao_servico,tb_servico.valor_servico, tb_reserva.horario_reserva , tb_reserva.dia_semana from tb_reserva "
                 +"inner join tb_cliente on tb_reserva.id_cliente = tb_cliente.id_cliente " 
                 +"inner join tb_funcionario on tb_reserva.id_funcionario = tb_funcionario.id_funcionario " 

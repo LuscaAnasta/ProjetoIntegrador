@@ -40,29 +40,17 @@ public class ClienteDeletarController {
         return false;
     }
 
-    /**
-     *
-     * @param cliente
-     */
+    
     public void deletarCliente(Cliente cliente){
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         
         try{
-            banco.stmt= banco.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            banco.resultset = banco.stmt.executeQuery("SELECT * FROM tb_cliente WHERE id_cliente = '" + cliente.getId()
-                    + "' AND cpf_cliente = '"+cliente.getCpf()+"'");
             PreparedStatement ps=banco.con.prepareStatement("DELETE FROM tb_cliente WHERE id_cliente=?");
-            
-            
-                if(banco.resultset.isBeforeFirst()){
-                    ps.setInt(1, cliente.getId());
-                    ps.execute();
-                    ps.close();
-                    JOptionPane.showMessageDialog(null, "Usuario Deletado");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Dados Invalidos");
-                }
+            ps.setInt(1, cliente.getId());
+            ps.execute();
+            ps.close();
+            JOptionPane.showMessageDialog(null, "Usuario Deletado");
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado");

@@ -50,7 +50,7 @@ public class TelaFuncionarioCadastro extends JFrame{
         pnlTela.setLayout(null);
         
         pnlAtividade = new JPanel();
-        pnlAtividade.setBackground(Color.yellow);
+        pnlAtividade.setBackground(Color.LIGHT_GRAY);
         pnlAtividade.setBounds(20, 300, 960, 280);
         pnlAtividade.setLayout(null);
         pnlTela.add(pnlAtividade);

@@ -11,11 +11,11 @@ import com.mycompany.projetointegrador.model.Funcionario;
 import com.mycompany.projetointegrador.model.Reserva;
 import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
-import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxCliente;
-import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxDiaSemana;
-import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxFuncionario;
-import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxHorario;
-import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxServico;
+import com.mycompany.projetointegrador.view.caixasselecao.BoxCliente;
+import com.mycompany.projetointegrador.view.caixasselecao.BoxDiaSemana;
+import com.mycompany.projetointegrador.view.caixasselecao.BoxFuncionario;
+import com.mycompany.projetointegrador.view.caixasselecao.BoxHorario;
+import com.mycompany.projetointegrador.view.caixasselecao.BoxServico;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -62,7 +62,7 @@ public class TelaReservaCadastro extends JFrame{
         pnlTela.setLayout(null);
         
         pnlAtividade = new JPanel();
-        pnlAtividade.setBackground(Color.yellow);
+        pnlAtividade.setBackground(Color.LIGHT_GRAY);
         pnlAtividade.setBounds(20, 300, 960, 280);
         pnlAtividade.setLayout(null);
         pnlTela.add(pnlAtividade);

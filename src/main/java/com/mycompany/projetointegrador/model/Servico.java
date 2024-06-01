@@ -8,7 +8,7 @@ package com.mycompany.projetointegrador.model;
  *
  * @author lucas
  */
-public class Servico<ArrayList> {
+public class Servico {
 
     public int getId() {
         return id;

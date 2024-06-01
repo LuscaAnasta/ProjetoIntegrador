@@ -7,7 +7,6 @@ package com.mycompany.projetointegrador.view.cliente;
 import com.mycompany.projetointegrador.controller.cliente.ClienteLerController;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.model.ClienteTabela;
 import com.mycompany.projetointegrador.model.FuncionarioTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
 import java.awt.BorderLayout;
@@ -24,12 +23,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.Icon;
+import javax.swing.JCheckBox;
 
 /**
  *
  * @author lucas.amsantos4
  */
-public class TelaCliente extends JFrame{
+public class TelaCliente extends JFrame {
     private JPanel telaCliente;
     private JPanel panelTabela, panelAtividadeAtual;
     private JButton btnVoltar;
@@ -44,7 +44,7 @@ public class TelaCliente extends JFrame{
         setResizable(false);
         setTitle("Painel Cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 700);
+        setBounds(500, 200, 1000, 500);
         setLocationRelativeTo(null);
         
         telaCliente = new JPanel();
@@ -52,44 +52,25 @@ public class TelaCliente extends JFrame{
         setContentPane(telaCliente);
         telaCliente.setLayout(null);
         
-        panelAtividadeAtual = new JPanel();
-        panelAtividadeAtual.setBackground(Color.yellow);
-        panelAtividadeAtual.setBounds(20, 300, 960, 280);
-        telaCliente.add(panelAtividadeAtual);
-        
         panelTabela = new JPanel(new BorderLayout());
         panelTabela.setBackground(Color.red);
-        panelTabela.setBounds(20,50, 960, 200);
+        panelTabela.setBounds(20,50, 960, 330);
         telaCliente.add(panelTabela);
         
-        String[][] data = {};
-        String[] columnNames = {};
+        TabelaCliente tabelaCliente = new TabelaCliente();
+        tbCliente = new JTable(tabelaCliente);
         
-        
-        
-        ClienteTabela tabela = ClienteLerController.lerClienteModel();
-        if(tabela != null){
-            tabela.getDados();
-            data = tabela.getDados();
-            columnNames = tabela.getNomeColunas();
-        }else{
-             JOptionPane.showMessageDialog(null,"Modelo null.");
-        }
-        
-        
-        tbCliente = new JTable(data, columnNames);
-        tbCliente.setFillsViewportHeight(true);
-        tbCliente.setBounds(100,400, 800, 50);
-        tbCliente.setRowHeight(30);
-        int n = tbCliente.getColumnCount()-1;
-        
+        tbCliente.getColumn(" ").setCellRenderer(new ButtonRenderer());
+        tbCliente.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox(), tbCliente, telaCliente, this));
+        tbCliente.getColumn("  ").setCellRenderer(new ButtonRenderer());
+        tbCliente.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox(), tbCliente, telaCliente, this));
         
         sp = new JScrollPane(tbCliente);
         
         panelTabela.add(sp, BorderLayout.CENTER);
        
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(20, 600, 100, 50);
+        btnVoltar.setBounds(20, 400, 80, 30);
         telaCliente.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
@@ -102,7 +83,7 @@ public class TelaCliente extends JFrame{
         });
         
         btnCadastrar = new JButton("Cadastrar cliente");
-        btnCadastrar.setBounds(20, 10, 320, 40);
+        btnCadastrar.setBounds(729, 20, 250, 30);
         telaCliente.add(btnCadastrar);
         
         btnCadastrar.addActionListener(new ActionListener(){
@@ -110,35 +91,13 @@ public class TelaCliente extends JFrame{
                 
                 TelaClienteCadastro telaCadastro = new TelaClienteCadastro();
                 telaCadastro.setVisible(true);
-                dispose();
+                
                 
             }
-        });
-        
-        btnDeletar = new JButton("Deletar cliente");
-        btnDeletar.setBounds(340, 10, 319, 40);
-        telaCliente.add(btnDeletar);
-        
-        btnDeletar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent x){
-                
-                TelaClienteDeletar telaDeletar = new TelaClienteDeletar();
-                telaDeletar.setVisible(true);
-                dispose();
-            }
-        });
-        
-        btnEditar = new JButton("Editar cliente");
-        btnEditar.setBounds(659, 10, 320, 40);
-        telaCliente.add(btnEditar);
-        
-        btnEditar.addActionListener(e -> {
-            // Cria e mostra o ChecarEditar
-            ChecarEditar dialog = new ChecarEditar(this);
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 120, 30);
+        btnRefrescar.setBounds(859, 380, 120, 30);
         telaCliente.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

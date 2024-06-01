@@ -53,7 +53,7 @@ public class TelaServico extends JFrame{
         telaServico.setLayout(null);
         
         panelAtividadeAtual = new JPanel();
-        panelAtividadeAtual.setBackground(Color.yellow);
+        panelAtividadeAtual.setBackground(Color.LIGHT_GRAY);
         panelAtividadeAtual.setBounds(20, 300, 960, 280);
         telaServico.add(panelAtividadeAtual);
         

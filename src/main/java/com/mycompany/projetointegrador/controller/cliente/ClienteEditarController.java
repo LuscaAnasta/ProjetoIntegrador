@@ -46,7 +46,7 @@ public class ClienteEditarController {
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.next()){
                 
-                System.out.println("1");
+                System.out.println("1 editasr");
                 String nome = banco.resultset.getString("nome_cliente");
                 int telefone = banco.resultset.getInt("tel_cliente");
                 String cpf = banco.resultset.getString("cpf_cliente");

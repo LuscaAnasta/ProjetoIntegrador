@@ -50,7 +50,7 @@ public class TelaFuncionarioDeletar extends JFrame{
         pnlTela.setLayout(null);
         
         pnlAtividade = new JPanel();
-        pnlAtividade.setBackground(Color.yellow);
+        pnlAtividade.setBackground(Color.LIGHT_GRAY);
         pnlAtividade.setBounds(20, 300, 960, 280);
         pnlAtividade.setLayout(null);
         pnlTela.add(pnlAtividade);
@@ -184,9 +184,9 @@ public class TelaFuncionarioDeletar extends JFrame{
             FuncionarioDeletarController deletar = new FuncionarioDeletarController();
             int id = Integer.parseInt(id_usuario.getText());
             String senha = senha_usuario.getText();
-            if(deletar.checarExistencia(new Funcionario(id))){
+            
             deletar.deletarFuncionario(new Funcionario(id, senha));
-            }
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados invalidos");
         }

@@ -50,7 +50,7 @@ public class TelaFuncionario extends JFrame{
         telaFuncionario.setLayout(null);
         
         panelAtividadeAtual = new JPanel();
-        panelAtividadeAtual.setBackground(Color.yellow);
+        panelAtividadeAtual.setBackground(Color.LIGHT_GRAY);
         panelAtividadeAtual.setBounds(20, 300, 960, 280);
         telaFuncionario.add(panelAtividadeAtual);
         

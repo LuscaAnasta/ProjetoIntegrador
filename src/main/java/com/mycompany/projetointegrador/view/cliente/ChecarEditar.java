@@ -52,8 +52,8 @@ public class ChecarEditar extends JDialog{
                     int id = Integer.parseInt(textField.getText());
                     ClienteEditarController verificar = new ClienteEditarController();
                     if(verificar.checarExistencia(new Cliente(id))){
-                        TelaClienteEditar telaEditar = new TelaClienteEditar(id);
-                        telaEditar.setVisible(true);
+                       // TelaClienteEditar telaEditar = new TelaClienteEditar(id);
+                        //telaEditar.setVisible(true);
                         frame.dispose();
                         dispose();
                     }
