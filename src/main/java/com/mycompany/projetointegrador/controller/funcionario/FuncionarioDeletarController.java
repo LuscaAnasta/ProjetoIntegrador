@@ -26,7 +26,9 @@ public class FuncionarioDeletarController {
             ps.execute();
             ps.close();
             JOptionPane.showMessageDialog(null, "Funcionario Deletado");
-            
+         
+        }catch(SQLIntegrityConstraintViolationException ei){
+            JOptionPane.showMessageDialog(null, "Funcionario tem reserva marcada.\nEdite ou delete reserva");
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado");
             System.out.println(ex);

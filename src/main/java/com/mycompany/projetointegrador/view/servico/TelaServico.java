@@ -4,25 +4,24 @@
  */
 package com.mycompany.projetointegrador.view.servico;
 
-import com.mycompany.projetointegrador.view.funcionario.*;
-import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
-import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
-import com.mycompany.projetointegrador.model.ServicoTabela;
+
 import com.mycompany.projetointegrador.view.TelaInicial;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.HeadlessException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableColumn;
-import javax.swing.Icon;
+
+
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -43,7 +42,7 @@ public class TelaServico extends JFrame{
         setResizable(false);
         setTitle("Painel Serviço");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 700);
+        setBounds(500, 200, 1000, 500);
         setLocationRelativeTo(null);
         
         telaServico = new JPanel();
@@ -51,44 +50,25 @@ public class TelaServico extends JFrame{
         setContentPane(telaServico);
         telaServico.setLayout(null);
         
-        panelAtividadeAtual = new JPanel();
-        panelAtividadeAtual.setBackground(Color.LIGHT_GRAY);
-        panelAtividadeAtual.setBounds(20, 300, 960, 280);
-        telaServico.add(panelAtividadeAtual);
-        
         panelTabela = new JPanel(new BorderLayout());
         panelTabela.setBackground(Color.red);
-        panelTabela.setBounds(20,50, 960, 200);
+        panelTabela.setBounds(20,50, 960, 330);
         telaServico.add(panelTabela);
+  
+        TabelaServico tabelaServico = new TabelaServico();
+        tbServico = new JTable(tabelaServico);
         
-        String[][] data = {};
-        String[] columnNames = {};
-        
-        
-        ServicoLerController ler = new ServicoLerController();
-        ServicoTabela tabela = ler.lerServicoModel();
-        if(tabela != null){
-            tabela.getDados();
-            data = tabela.getDados();
-            columnNames = tabela.getNomeColunas();
-        }else{
-             JOptionPane.showMessageDialog(null,"Modelo null.");
-        }
-        
-        
-        tbServico = new JTable(data, columnNames);
-        tbServico.setFillsViewportHeight(true);
-        tbServico.setBounds(100,400, 800, 50);
-        tbServico.setRowHeight(30);
-        int n = tbServico.getColumnCount()-1;
-        
-        
+        tbServico.getColumn(" ").setCellRenderer(new ButtonRenderer());
+        tbServico.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox(), tbServico, telaServico, this));
+        tbServico.getColumn("  ").setCellRenderer(new ButtonRenderer());
+        tbServico.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox(), tbServico, telaServico, this));
+       
         sp = new JScrollPane(tbServico);
         
         panelTabela.add(sp, BorderLayout.CENTER);
        
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(20, 600, 100, 50);
+        btnVoltar.setBounds(20, 400, 80, 30);
         telaServico.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
@@ -100,8 +80,8 @@ public class TelaServico extends JFrame{
             }
         });
         
-        btnCadastrar = new JButton("Cadastrar serviço");
-        btnCadastrar.setBounds(20, 10, 320, 40);
+        btnCadastrar = new JButton("Cadastrar Servico");
+        btnCadastrar.setBounds(729, 20, 250, 30);
         telaServico.add(btnCadastrar);
         
         btnCadastrar.addActionListener(new ActionListener(){
@@ -109,35 +89,13 @@ public class TelaServico extends JFrame{
                 
                 TelaServicoCadastro telaCadastro = new TelaServicoCadastro();
                 telaCadastro.setVisible(true);
-                dispose();
+                
                 
             }
-        });
-        
-        btnDeletar = new JButton("Deletar serviço");
-        btnDeletar.setBounds(340, 10, 319, 40);
-        telaServico.add(btnDeletar);
-        
-        btnDeletar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent x){
-                
-                TelaServicoDeletar telaDeletar = new TelaServicoDeletar();
-                telaDeletar.setVisible(true);
-                dispose();
-            }
-        });
-        
-        btnEditar = new JButton("Editar serviço");
-        btnEditar.setBounds(659, 10, 320, 40);
-        telaServico.add(btnEditar);
-        
-        btnEditar.addActionListener(e -> {
-            // Cria e mostra o ChecarEditar
-            ChecarEditar dialog = new ChecarEditar(this);
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 120, 30);
+        btnRefrescar.setBounds(859, 380, 120, 30);
         telaServico.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){

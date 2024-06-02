@@ -9,6 +9,7 @@ import com.mycompany.projetointegrador.model.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
 /**
  *
@@ -25,8 +26,10 @@ public class ClienteDeletarController {
             ps.setInt(1, cliente.getId());
             ps.execute();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Usuario Deletado");
-            
+            JOptionPane.showMessageDialog(null, "Cliente Deletado");
+        
+        }catch(SQLIntegrityConstraintViolationException ei){
+            JOptionPane.showMessageDialog(null, "Cliente tem reserva marcada.\nEdite ou delete reserva");
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado");
             System.out.println(ex);

@@ -6,7 +6,6 @@ package com.mycompany.projetointegrador.view.caixasselecao;
 
 import com.mycompany.projetointegrador.controller.servico.ServicoLerController;
 import com.mycompany.projetointegrador.model.Servico;
-import com.mycompany.projetointegrador.model.ServicoTabela;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;

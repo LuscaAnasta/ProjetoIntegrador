@@ -7,7 +7,6 @@ package com.mycompany.projetointegrador.controller.reserva;
 import com.mycompany.projetointegrador.controller.funcionario.*;
 import com.mycompany.projetointegrador.Conexao;
 import com.mycompany.projetointegrador.model.ReservaTabela;
-import com.mycompany.projetointegrador.model.ServicoTabela;
 import com.mycompany.projetointegrador.view.funcionario.TelaFuncionarioCadastro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

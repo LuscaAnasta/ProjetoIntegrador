@@ -10,6 +10,28 @@ package com.mycompany.projetointegrador.model;
  */
 public class Servico {
 
+   
+
+    public Servico(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+    
+    public Servico(int id) {
+        this.id = id;
+    }
+    
+    public Servico(String descricao, float valor) {
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Servico(int id, String descricao, float valor) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
     public int getId() {
         return id;
     }
@@ -32,25 +54,6 @@ public class Servico {
 
     public void setValor(float valor) {
         this.valor = valor;
-    }
-
-    public Servico(int id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
-    
-    public Servico(int id) {
-        this.id = id;
-    }
-    
-    public Servico(String descricao, float valor) {
-        this.descricao = descricao;
-        this.valor = valor;
-    }
-
-    public Servico(int id, String descricao, float valor) {
-        this.id = id;
-        this.descricao = descricao;
     }
     int id;
     String descricao;

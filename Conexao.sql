@@ -47,6 +47,7 @@ insert into reserva(id_cliente, id_funcionario, data_reserva, descricao) values 
 SELECT * FROM tb_cliente; 
 SELECT * from tb_funcionario; 
 SELECT * FROM tb_reserva;
+SELECT * FROM tb_servico;
 
 
 #drop table tb_reserva;

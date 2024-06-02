@@ -9,6 +9,7 @@ import com.mycompany.projetointegrador.model.Servico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
 /**
  *
@@ -46,7 +47,8 @@ public class ServicoDeletarController {
                         ps.close();
                         JOptionPane.showMessageDialog(null, "Serviço Deletado");
 
-
+            }catch(SQLIntegrityConstraintViolationException ei){
+                JOptionPane.showMessageDialog(null, "Serviço esta sendo utilizado.\nEdite ou delete reserva");
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "Algo deu errado");
                 System.out.println(ex);
