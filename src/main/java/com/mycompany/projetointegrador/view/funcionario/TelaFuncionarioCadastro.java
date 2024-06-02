@@ -20,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 
 public class TelaFuncionarioCadastro extends JFrame{
@@ -27,7 +28,7 @@ public class TelaFuncionarioCadastro extends JFrame{
     private JPanel pnlTela, pnlTabela;
     private JTable tbFuncionario;
     private JScrollPane sp;
-    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail; 
+    private JLabel lblnome, lblsenha, lblCsenha, lbltelefone, lbllogin, lblemail, lblCadastrar; 
     private JButton btnVoltar, btnConfirmar;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
     private JTextField nome_usuario,telefone_usuario, login_usuario, email_usuario;
@@ -56,6 +57,11 @@ public class TelaFuncionarioCadastro extends JFrame{
         
             }
         });
+        
+        lblCadastrar = new JLabel("Cadastrar Funcionario", SwingConstants.CENTER);
+        lblCadastrar.setBounds(150, 40, 200, 20);
+        lblCadastrar.setFont(new Font("Calibri", Font.BOLD, 16));
+        pnlTela.add(lblCadastrar);
         
         lblnome=new JLabel("Nome Funcionario");
         lblnome.setBounds(30, 90, 200, 20);

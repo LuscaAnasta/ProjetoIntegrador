@@ -19,8 +19,9 @@ public class ServicoEditarController {
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_servico WHERE descricao_servico = ? ");
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_servico WHERE descricao_servico = ? AND valor_servico = ?");
             lerDados.setString(1, servico.getDescricao());
+            lerDados.setFloat(2, servico.getValor());
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.next()){
                 banco.FecharConexao(); 

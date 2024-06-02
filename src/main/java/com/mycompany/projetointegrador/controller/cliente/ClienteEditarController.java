@@ -19,7 +19,7 @@ public class ClienteEditarController {
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_cliente WHERE cpf_cliente = ? ");
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_cliente WHERE cpf_cliente = ?");
             lerDados.setString(1, cliente.getCpf());
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.isBeforeFirst()){

@@ -17,6 +17,7 @@ import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxHorario;
 import com.mycompany.projetointegrador.view.reserva.caixasselecao.BoxServico;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 
 public class TelaReservaCadastro extends JFrame{
@@ -38,7 +40,7 @@ public class TelaReservaCadastro extends JFrame{
     private JPanel pnlTela, pnlTabela;
     private JTable tbReserva;
     private JScrollPane sp;
-    private JLabel lblfuncionario, lblcliente, lbldescricao, lbltelefone, lbldia, lblhorario;
+    private JLabel lblfuncionario, lblcliente, lbldescricao, lbltelefone, lbldia, lblhorario, lblCadastrar;
     private JComboBox<String> cboxCliente, cboxFuncionario, cboxServico, cboxDia, cboxHorario;
     private JButton btnVoltar, btnConfirmar;
     private JButton btnTelaCadastro, btnTelaDeletar, btnTelaEditar, btnRefrescar;
@@ -68,6 +70,11 @@ public class TelaReservaCadastro extends JFrame{
         
             }
         });
+        
+        lblCadastrar = new JLabel("Agendar Horario", SwingConstants.CENTER);
+        lblCadastrar.setBounds(150, 40, 200, 20);
+        lblCadastrar.setFont(new Font("Calibri", Font.BOLD, 16));
+        pnlTela.add(lblCadastrar);
         
         lblcliente=new JLabel("Cliente");
         lblcliente.setBounds(30, 90, 200, 20);
