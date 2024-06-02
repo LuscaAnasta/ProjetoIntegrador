@@ -113,8 +113,6 @@ public class TelaServicoEditar extends JDialog{
             float valor = Float.parseFloat(valor_servico.getText());
             ServicoEditarController editar = new ServicoEditarController();
             editar.editarServico(new Servico(id, descricao, valor));
-            TelaServico telaFuncionario = new TelaServico();
-            telaFuncionario.setVisible(true);
             dispose();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Dados incorretos");

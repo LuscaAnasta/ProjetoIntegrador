@@ -23,9 +23,10 @@ public class ReservaCadastrarController {
         try{
             System.out.println("1");
             PreparedStatement verificarLogin = bancodds.con.prepareStatement("SELECT * FROM tb_reserva "
-                    + "WHERE horario_reserva = ? AND dia_semana = ?");
+                    + "WHERE horario_reserva = ? AND dia_semana = ? AND id_funcionario = ?");
             verificarLogin.setString(1, reserva.getHorario());
             verificarLogin.setString(2, reserva.getDia());
+            verificarLogin.setInt(3, reserva.getId_funcionario());
             ResultSet resultado = verificarLogin.executeQuery();
             System.out.println("2");
 

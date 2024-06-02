@@ -35,7 +35,7 @@ horario_reserva varchar(10) not null,
 dia_semana varchar(20) not null
 );
 
-select tb_reserva.id_reserva, tb_reserva.id_cliente, tb_cliente.nome_cliente, tb_reserva.id_funcionario, tb_funcionario.nome_funcionario, tb_servico.descricao_servico,tb_servico.valor_servico, tb_reserva.horario_reserva , tb_reserva.dia_semana from tb_reserva
+select tb_reserva.id_reserva, tb_cliente.nome_cliente, tb_cliente.cpf_cliente, tb_reserva.dia_semana, tb_reserva.horario_reserva, tb_servico.descricao_servico, tb_servico.valor_servico, tb_funcionario.nome_funcionario from tb_reserva
 inner join tb_cliente on tb_reserva.id_cliente = tb_cliente.id_cliente
 inner join tb_funcionario on tb_reserva.id_funcionario = tb_funcionario.id_funcionario
 inner join tb_servico on tb_reserva.id_servico = tb_servico.id_servico;

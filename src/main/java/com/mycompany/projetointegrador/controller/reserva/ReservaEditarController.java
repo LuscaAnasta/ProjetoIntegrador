@@ -21,18 +21,20 @@ public class ReservaEditarController {
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_reserva WHERE id_reserva = ? ");
-            lerDados.setInt(1, reserva.getId());
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_reserva "
+                    + "WHERE horario_reserva = ? AND dia_semana = ? AND id_funcionario = ?");
+            lerDados.setString(1, reserva.getHorario());
+            lerDados.setString(2, reserva.getDia());
+            lerDados.setInt(3, reserva.getId_funcionario());
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.isBeforeFirst()){
                 banco.FecharConexao(); 
-                return true;
+                return false;
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro");
         }finally{ banco.FecharConexao(); }
-        JOptionPane.showMessageDialog(null, "Reserva Não Existe");
-        return false;
+        return true;
     }
     
     public Reserva lerReserva(Reserva reserva){
@@ -74,18 +76,21 @@ public class ReservaEditarController {
         banco.AbrirConexao();
         System.out.println(reserva.getId_cliente());
         try{
-            
-            PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_reserva SET id_funcionario = ?, id_servico = ?,"
-                    + "horario_reserva = ?,dia_semana = ? "
-                    + "WHERE id_reserva = ?");
-            atualizarDados.setInt(5, reserva.getId());
-            atualizarDados.setInt(1, reserva.getId_funcionario());
-            atualizarDados.setInt(2, reserva.getId_servico());
-            atualizarDados.setString(3, reserva.getHorario());
-            atualizarDados.setString(4, reserva.getDia());
-            atualizarDados.execute();
-            atualizarDados.close();
-            JOptionPane.showMessageDialog(null, "Reserva alterado com sucesso");
+            if(checarExistencia(reserva)){
+                PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_reserva SET id_funcionario = ?, id_servico = ?,"
+                        + "horario_reserva = ?,dia_semana = ? "
+                        + "WHERE id_reserva = ?");
+                atualizarDados.setInt(5, reserva.getId());
+                atualizarDados.setInt(1, reserva.getId_funcionario());
+                atualizarDados.setInt(2, reserva.getId_servico());
+                atualizarDados.setString(3, reserva.getHorario());
+                atualizarDados.setString(4, reserva.getDia());
+                atualizarDados.execute();
+                atualizarDados.close();
+                JOptionPane.showMessageDialog(null, "Reserva alterado com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null,"Horario ja reservado.");
+            }
         }catch(Exception ex){
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Algo deu errado, editar");

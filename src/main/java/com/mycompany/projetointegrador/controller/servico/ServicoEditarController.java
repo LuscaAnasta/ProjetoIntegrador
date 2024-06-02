@@ -17,23 +17,22 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ServicoEditarController {
-    public boolean checarExistencia(Servico servico){
+    public static boolean checarExistencia(Servico servico){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_servico WHERE id_servico = ? ");
-            lerDados.setInt(1, servico.getId());
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_servico WHERE descricao_servico = ? ");
+            lerDados.setString(1, servico.getDescricao());
             banco.resultset = lerDados.executeQuery();
-            if(banco.resultset.isBeforeFirst()){
+            if(banco.resultset.next()){
                 banco.FecharConexao(); 
-                return true;
+                return false;
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro");
         }finally{ banco.FecharConexao(); }
-        JOptionPane.showMessageDialog(null, "Servico Não Existe");
-        return false;
+        return true;
     }
     
     public Servico lerServico(Servico servico){
@@ -67,7 +66,7 @@ public class ServicoEditarController {
         banco.AbrirConexao();
         
         try{
-            
+            if(checarExistencia(servico)){
             PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_servico SET descricao_servico = ?, valor_servico = ? "
                     + "WHERE id_servico = ?");
             atualizarDados.setInt(3, servico.getId());
@@ -77,6 +76,10 @@ public class ServicoEditarController {
             atualizarDados.execute();
             atualizarDados.close();
             JOptionPane.showMessageDialog(null, "Serviço alterado com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null,"Serviço ja esta Cadastrado.");
+            }
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado");
         }finally{ banco.FecharConexao(); }

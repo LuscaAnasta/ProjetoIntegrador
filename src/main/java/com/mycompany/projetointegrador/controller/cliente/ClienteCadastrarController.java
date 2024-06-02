@@ -9,6 +9,7 @@ import com.mycompany.projetointegrador.Conexao;
 import com.mycompany.projetointegrador.model.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ClienteCadastrarController {
+    
+    
     public void cadastrarCliente(Cliente cliente){
         Conexao bancodds = new Conexao();
         bancodds.AbrirConexao();

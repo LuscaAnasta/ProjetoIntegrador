@@ -89,6 +89,26 @@ public class Reserva {
     public void setDia(String dia) {
         this.dia = dia;
     }
+    
+    public String getCpf_cliente() {
+        return cpf_cliente;
+    }
+
+    public void setCpf_cliente(String cpf_cliente) {
+        this.cpf_cliente = cpf_cliente;
+    }
+    
+     public Reserva(int id, String nome_cliente, String cpf_cliente, String nome_funcionario, String descricao_servico, 
+             float valor_servico, String horario, String dia) {
+        this.id = id;
+        this.nome_cliente = nome_cliente;
+        this.cpf_cliente = cpf_cliente;
+        this.nome_funcionario = nome_funcionario;
+        this.descricao_servico = descricao_servico;
+        this.valor_servico = valor_servico;
+        this.horario = horario;
+        this.dia = dia;
+}
 
     public Reserva(int id_cliente, int id_funcionario, int id_servico, String horario, String dia) {
         this.id_cliente = id_cliente;
@@ -126,9 +146,12 @@ public class Reserva {
         this.dia = dia;
     }
     
+   
+    
     private int id;
     private int id_cliente;
     private String nome_cliente;
+    private String cpf_cliente;
     private int id_funcionario;
     private String nome_funcionario;
     private int id_servico;

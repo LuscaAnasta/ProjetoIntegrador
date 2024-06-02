@@ -7,8 +7,10 @@ package com.mycompany.projetointegrador.view.reserva;
 import com.mycompany.projetointegrador.view.funcionario.*;
 import com.mycompany.projetointegrador.controller.funcionario.FuncionarioLerController;
 import com.mycompany.projetointegrador.controller.reserva.ReservaLerController;
-import com.mycompany.projetointegrador.model.ReservaTabela;
 import com.mycompany.projetointegrador.view.TelaInicial;
+import com.mycompany.projetointegrador.view.cliente.TabelaCliente;
+import com.mycompany.projetointegrador.view.cliente.TelaCliente;
+import com.mycompany.projetointegrador.view.cliente.TelaClienteCadastro;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -23,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.Icon;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -43,7 +46,7 @@ public class TelaReserva extends JFrame{
         setResizable(false);
         setTitle("Painel Reserva");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 700);
+        setBounds(500, 200, 1000, 500);
         setLocationRelativeTo(null);
         
         telaReserva = new JPanel();
@@ -51,44 +54,25 @@ public class TelaReserva extends JFrame{
         setContentPane(telaReserva);
         telaReserva.setLayout(null);
         
-        panelAtividadeAtual = new JPanel();
-        panelAtividadeAtual.setBackground(Color.LIGHT_GRAY);
-        panelAtividadeAtual.setBounds(20, 300, 960, 280);
-        telaReserva.add(panelAtividadeAtual);
-        
         panelTabela = new JPanel(new BorderLayout());
         panelTabela.setBackground(Color.red);
-        panelTabela.setBounds(20,50, 960, 200);
+        panelTabela.setBounds(20,50, 960, 330);
         telaReserva.add(panelTabela);
         
-        String[][] data = {};
-        String[] columnNames = {};
+        TabelaReserva tabelaReserva = new TabelaReserva();
+        tbReserva = new JTable(tabelaReserva);
         
-        
-        ReservaLerController ler = new ReservaLerController();
-        ReservaTabela tabela = ler.lerReservaModel();
-        if(tabela != null){
-            tabela.getDados();
-            data = tabela.getDados();
-            columnNames = tabela.getNomeColunas();
-        }else{
-             JOptionPane.showMessageDialog(null,"Modelo null.");
-        }
-        
-        
-        tbReserva = new JTable(data, columnNames);
-        tbReserva.setFillsViewportHeight(true);
-        tbReserva.setBounds(100,400, 800, 50);
-        tbReserva.setRowHeight(30);
-        int n = tbReserva.getColumnCount()-1;
-        
+        tbReserva.getColumn(" ").setCellRenderer(new ButtonRenderer());
+        tbReserva.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox(), tbReserva, telaReserva, this));
+        tbReserva.getColumn("  ").setCellRenderer(new ButtonRenderer());
+        tbReserva.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox(), tbReserva, telaReserva, this));
         
         sp = new JScrollPane(tbReserva);
         
         panelTabela.add(sp, BorderLayout.CENTER);
        
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(20, 600, 100, 50);
+        btnVoltar.setBounds(20, 400, 80, 30);
         telaReserva.add(btnVoltar);
         
         btnVoltar.addActionListener(new ActionListener(){
@@ -100,8 +84,8 @@ public class TelaReserva extends JFrame{
             }
         });
         
-        btnCadastrar = new JButton("Cadastrar reserva");
-        btnCadastrar.setBounds(20, 10, 320, 40);
+        btnCadastrar = new JButton("Agendar Horario");
+        btnCadastrar.setBounds(729, 20, 250, 30);
         telaReserva.add(btnCadastrar);
         
         btnCadastrar.addActionListener(new ActionListener(){
@@ -109,35 +93,13 @@ public class TelaReserva extends JFrame{
                 
                 TelaReservaCadastro telaCadastro = new TelaReservaCadastro();
                 telaCadastro.setVisible(true);
-                dispose();
+                
                 
             }
-        });
-        
-        btnDeletar = new JButton("Deletar reserva");
-        btnDeletar.setBounds(340, 10, 319, 40);
-        telaReserva.add(btnDeletar);
-        
-        btnDeletar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent x){
-                
-                TelaReservaDeletar telaDeletar = new TelaReservaDeletar();
-                telaDeletar.setVisible(true);
-                dispose();
-            }
-        });
-        
-        btnEditar = new JButton("Editar reserva");
-        btnEditar.setBounds(659, 10, 320, 40);
-        telaReserva.add(btnEditar);
-        
-        btnEditar.addActionListener(e -> {
-            // Cria e mostra o ChecarEditar
-            ChecarEditar dialog = new ChecarEditar(this);
         });
         
         btnRefrescar = new JButton("Refrescar");
-        btnRefrescar.setBounds(20, 250, 120, 30);
+        btnRefrescar.setBounds(859, 380, 120, 30);
         telaReserva.add(btnRefrescar);
         
         btnRefrescar.addActionListener(new ActionListener(){
@@ -148,5 +110,6 @@ public class TelaReserva extends JFrame{
                 dispose();
             }
         });
+        
     }
 }

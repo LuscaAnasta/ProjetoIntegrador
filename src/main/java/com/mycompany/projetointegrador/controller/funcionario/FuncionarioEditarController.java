@@ -15,23 +15,22 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class FuncionarioEditarController {
-    public boolean checarExistencia(Funcionario funcionario){
+    public static boolean checarExistencia(Funcionario funcionario){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
         try{
-            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_funcionario WHERE id_funcionario = ? ");
-            lerDados.setInt(1, funcionario.getId());
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_funcionario WHERE login_funcionario = ? ");
+            lerDados.setString(1, funcionario.getLogin());
             banco.resultset = lerDados.executeQuery();
             if(banco.resultset.isBeforeFirst()){
                 banco.FecharConexao(); 
-                return true;
+                return false;
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro");
         }finally{ banco.FecharConexao(); }
-        JOptionPane.showMessageDialog(null, "Usuario Não Existe");
-        return false;
+        return true;
     }
     
     public Funcionario lerFuncionario(Funcionario funcionario){
@@ -67,19 +66,24 @@ public class FuncionarioEditarController {
         banco.AbrirConexao();
         
         try{
-            
-            PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_funcionario SET nome_funcionario=?, login_funcionario=?,"
-                    + "senha_funcionario=?,tel_funcionario=?, email_funcionario=? "
-                    + "WHERE id_funcionario = ?");
-            atualizarDados.setInt(6, funcionario.getId());
-            atualizarDados.setString(1, funcionario.getNome());
-            atualizarDados.setString(2, funcionario.getLogin());
-            atualizarDados.setString(3, funcionario.getSenha());
-            atualizarDados.setInt(4, funcionario.getTelefone());
-            atualizarDados.setString(5, funcionario.getEmail());
-            atualizarDados.execute();
-            atualizarDados.close();
-            JOptionPane.showMessageDialog(null, "Usuario alterado com sucesso");
+            if(checarExistencia(funcionario)){
+                PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_funcionario SET nome_funcionario=?, login_funcionario=?,"
+                        + "senha_funcionario=?,tel_funcionario=?, email_funcionario=? "
+                        + "WHERE id_funcionario = ?");
+                atualizarDados.setInt(6, funcionario.getId());
+                atualizarDados.setString(1, funcionario.getNome());
+                atualizarDados.setString(2, funcionario.getLogin());
+                atualizarDados.setString(3, funcionario.getSenha());
+                atualizarDados.setInt(4, funcionario.getTelefone());
+                atualizarDados.setString(5, funcionario.getEmail());
+                atualizarDados.execute();
+                atualizarDados.close();
+                
+                JOptionPane.showMessageDialog(null, "Usuario alterado com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null,"Login ja esta Cadastrado.");
+            }
+                
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado, editar");
         }finally{ banco.FecharConexao(); }

@@ -16,6 +16,24 @@ import javax.swing.JOptionPane;
  * @author lucas.amsantos4
  */
 public class ClienteEditarController {
+    
+    public static boolean checarExistencia(Cliente cliente){
+        
+        Conexao banco = new Conexao();
+        banco.AbrirConexao();
+        try{
+            PreparedStatement lerDados = banco.con.prepareStatement("SELECT * FROM tb_cliente WHERE cpf_cliente = ? ");
+            lerDados.setString(1, cliente.getCpf());
+            banco.resultset = lerDados.executeQuery();
+            if(banco.resultset.isBeforeFirst()){
+                banco.FecharConexao(); 
+                return false;
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro");
+        }finally{ banco.FecharConexao(); }
+        return true;
+    }
  
     public Cliente lerCliente(Cliente cliente){
         Conexao banco = new Conexao();
@@ -48,17 +66,20 @@ public class ClienteEditarController {
         banco.AbrirConexao();
         
         try{
-            
-            PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_cliente SET nome_cliente = ?,"
-                    + "tel_cliente = ?, cpf_cliente = ? "
-                    + "WHERE id_cliente = ?");
-            atualizarDados.setInt(4, cliente.getId());
-            atualizarDados.setString(1, cliente.getNome());
-            atualizarDados.setInt(2, cliente.getTelefone());
-            atualizarDados.setString(3, cliente.getCpf());
-            atualizarDados.execute();
-            atualizarDados.close();
-            JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso");
+            if(checarExistencia(cliente)){
+                PreparedStatement atualizarDados = banco.con.prepareStatement("UPDATE tb_cliente SET nome_cliente = ?,"
+                        + "tel_cliente = ?, cpf_cliente = ? "
+                        + "WHERE id_cliente = ?");
+                atualizarDados.setInt(4, cliente.getId());
+                atualizarDados.setString(1, cliente.getNome());
+                atualizarDados.setInt(2, cliente.getTelefone());
+                atualizarDados.setString(3, cliente.getCpf());
+                atualizarDados.execute();
+                atualizarDados.close();
+                JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null,"Cliente ja esta Cadastrado.");
+            }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado, editar");
         }finally{ banco.FecharConexao(); }
