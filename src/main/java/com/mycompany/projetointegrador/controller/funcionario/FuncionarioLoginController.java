@@ -10,10 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas
- */
+
 public class FuncionarioLoginController {
     public boolean logar(Funcionario funcionario){
         

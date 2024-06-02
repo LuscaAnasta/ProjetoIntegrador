@@ -19,10 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author lucas
- */
+
 public class ButtonRenderer extends JButton implements TableCellRenderer{
     public ButtonRenderer() {
         setOpaque(true);

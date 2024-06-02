@@ -11,10 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class ReservaDeletarController {
     public static boolean checarExistencia(int id){
         

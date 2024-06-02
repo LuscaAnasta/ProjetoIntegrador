@@ -15,6 +15,7 @@
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/TelaLogin.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/model/Servico.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioCadastrarController.java
+/home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/RoundedBorder.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/reserva/ReservaEditarController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/cliente/ClienteDeletarController.java
 /home/lucas/Projetos/ProjetoIntegrador/src/main/java/com/mycompany/projetointegrador/controller/funcionario/FuncionarioEditarController.java

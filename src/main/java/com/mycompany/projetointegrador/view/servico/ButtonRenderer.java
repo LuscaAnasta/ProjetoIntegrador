@@ -6,7 +6,9 @@ package com.mycompany.projetointegrador.view.servico;
 
 import com.mycompany.projetointegrador.view.cliente.*;
 import com.mycompany.projetointegrador.controller.cliente.ClienteDeletarController;
+import com.mycompany.projetointegrador.controller.servico.ServicoDeletarController;
 import com.mycompany.projetointegrador.model.Cliente;
+import com.mycompany.projetointegrador.model.Servico;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author lucas
- */
+
 public class ButtonRenderer extends JButton implements TableCellRenderer{
     public ButtonRenderer() {
         setOpaque(true);
@@ -92,8 +91,8 @@ class ButtonEditor extends DefaultCellEditor {
                 
                 if(deletar == JOptionPane.YES_OPTION){
                     
-                    ClienteDeletarController delete = new ClienteDeletarController();
-                    delete.deletarCliente(new Cliente(Integer.parseInt(idValue.toString())));
+                    ServicoDeletarController delete = new ServicoDeletarController();
+                    delete.deletarServico(new Servico(Integer.parseInt(idValue.toString())));
                 }
             }
         }

@@ -4,10 +4,7 @@
  */
 package com.mycompany.projetointegrador.model;
 
-/**
- *
- * @author lucas
- */
+
 public class Cliente {
 
     public int getId() {

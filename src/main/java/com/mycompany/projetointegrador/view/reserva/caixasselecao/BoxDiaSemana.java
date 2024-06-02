@@ -6,10 +6,7 @@ package com.mycompany.projetointegrador.view.reserva.caixasselecao;
 
 import javax.swing.JComboBox;
 
-/**
- *
- * @author lucas
- */
+
 public class BoxDiaSemana extends JComboBox<String>{
     private String[] diasemana = {"Segunda", "Terça","Quarta","Quinta","Sexta","Sabado"};
     public BoxDiaSemana(){

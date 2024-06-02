@@ -11,10 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class FuncionarioDeletarController {
       public void deletarFuncionario(Funcionario funcionario){
         Conexao banco = new Conexao();

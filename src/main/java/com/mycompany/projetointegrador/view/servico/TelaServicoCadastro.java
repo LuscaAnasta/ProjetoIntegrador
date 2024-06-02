@@ -25,10 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class TelaServicoCadastro extends JFrame{
     
     private JPanel pnlTela;

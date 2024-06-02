@@ -21,10 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class TelaFuncionarioCadastro extends JFrame{
     
     private JPanel pnlTela, pnlTabela;
@@ -114,7 +111,7 @@ public class TelaFuncionarioCadastro extends JFrame{
         pnlTela.add(telefone_usuario);
         telefone_usuario.setColumns(10);
         
-        btnConfirmar = new JButton("Editar Funcionario");
+        btnConfirmar = new JButton("Cadastrar Funcionario");
         btnConfirmar.setBounds(150, 300, 200, 30);
         pnlTela.add(btnConfirmar);
         

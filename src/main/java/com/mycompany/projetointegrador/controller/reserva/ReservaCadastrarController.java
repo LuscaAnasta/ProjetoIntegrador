@@ -11,10 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class ReservaCadastrarController {
     public static void cadastrarReserva(Reserva reserva){
         Conexao bancodds = new Conexao();

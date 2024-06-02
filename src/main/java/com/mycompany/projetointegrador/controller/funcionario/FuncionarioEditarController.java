@@ -10,10 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class FuncionarioEditarController {
     public static boolean checarExistencia(Funcionario funcionario){
         

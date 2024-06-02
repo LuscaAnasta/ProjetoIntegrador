@@ -11,10 +11,6 @@ import com.mycompany.projetointegrador.model.Funcionario;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author lucas
- */
 public class BoxFuncionario extends JComboBox<String>{
     public BoxFuncionario(){
         setBounds(10, 20, 200, 20);

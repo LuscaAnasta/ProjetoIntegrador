@@ -16,10 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class ClienteLerController {
    
     

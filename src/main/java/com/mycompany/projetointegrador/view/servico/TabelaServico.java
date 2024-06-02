@@ -15,10 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author lucas
- */
+
 public class TabelaServico extends AbstractTableModel{
     private final List<Object[]> data;
     private final String[] columnNames = {"ID", "Descriçao", "Valor", " ", "  "};

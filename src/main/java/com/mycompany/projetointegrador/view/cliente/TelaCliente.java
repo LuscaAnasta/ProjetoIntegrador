@@ -24,10 +24,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class TelaCliente extends JFrame {
     private JPanel telaCliente;
     private JPanel panelTabela, panelAtividadeAtual;

@@ -10,10 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class Conexao {
     public Connection con=null;
     public Statement stmt=null;

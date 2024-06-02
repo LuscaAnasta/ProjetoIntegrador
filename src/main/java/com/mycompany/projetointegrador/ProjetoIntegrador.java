@@ -6,10 +6,7 @@ package com.mycompany.projetointegrador;
 
 import com.mycompany.projetointegrador.view.TelaInicial;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class ProjetoIntegrador {
 
     public static void main(String[] args) {

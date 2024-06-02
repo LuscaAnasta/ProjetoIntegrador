@@ -12,10 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class ClienteCadastrarController {
     
     

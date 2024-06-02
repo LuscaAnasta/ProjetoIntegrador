@@ -32,10 +32,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class TelaReservaCadastro extends JFrame{
     
     private JPanel pnlTela, pnlTabela;

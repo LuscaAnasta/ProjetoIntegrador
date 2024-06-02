@@ -17,10 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author lucas
- */
+
 public class TelaLogin extends JFrame{
     private JPanel telaLogin;
     private JTextField txtLogin;
@@ -31,7 +28,7 @@ public class TelaLogin extends JFrame{
         setResizable(false);
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 600, 600);
+        setBounds(500, 200, 400, 400);
         setLocationRelativeTo(null);
         
         telaLogin = new JPanel();
@@ -40,25 +37,26 @@ public class TelaLogin extends JFrame{
         telaLogin.setLayout(null);
         
         lbllogin=new JLabel("Login");
-        lbllogin.setBounds(200, 70, 200, 10); 
+        lbllogin.setBounds(100, 70, 200, 10); 
         telaLogin.add(lbllogin);
         
         txtLogin = new JTextField();
-        txtLogin.setBounds(200, 90, 200, 20);
+        txtLogin.setBounds(100, 90, 200, 20);
         telaLogin.add(txtLogin);
         txtLogin.setColumns(10);
         
         lblsenha=new JLabel("Nova Senha");
-        lblsenha.setBounds(200, 120, 200, 10); 
+        lblsenha.setBounds(100, 120, 200, 10); 
         telaLogin.add(lblsenha);
         
         txtSenha = new JPasswordField();
-        txtSenha.setBounds(200, 140, 200, 20);
+        txtSenha.setBounds(100, 140, 200, 20);
         telaLogin.add(txtSenha);
         txtSenha.setColumns(10);
         
         btnLogar = new JButton("Logar");
-        btnLogar.setBounds(200, 400, 200, 30);
+        btnLogar.setBounds(100, 200, 200, 30);
+        btnLogar.setBorder(new RoundedBorder(10));
         telaLogin.add(btnLogar);
         
         btnLogar.addActionListener(new ActionListener(){

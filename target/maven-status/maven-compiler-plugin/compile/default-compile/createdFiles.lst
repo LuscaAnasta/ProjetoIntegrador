@@ -42,6 +42,7 @@ com/mycompany/projetointegrador/view/cliente/ButtonEditor$1.class
 com/mycompany/projetointegrador/controller/cliente/ClienteLerController.class
 com/mycompany/projetointegrador/view/funcionario/TelaFuncionarioCadastro$1.class
 com/mycompany/projetointegrador/view/servico/TelaServicoCadastro$2.class
+com/mycompany/projetointegrador/RoundedBorder.class
 com/mycompany/projetointegrador/view/reserva/TelaReserva.class
 com/mycompany/projetointegrador/controller/funcionario/FuncionarioLoginController.class
 com/mycompany/projetointegrador/view/servico/TelaServicoEditar.class
@@ -59,6 +60,7 @@ com/mycompany/projetointegrador/view/reserva/TelaReservaEditar$1.class
 com/mycompany/projetointegrador/Conexao.class
 com/mycompany/projetointegrador/model/Cliente.class
 com/mycompany/projetointegrador/view/reserva/ButtonRenderer.class
+com/mycompany/projetointegrador/view/TelaInicial$6.class
 com/mycompany/projetointegrador/view/reserva/TelaReservaEditar.class
 com/mycompany/projetointegrador/controller/funcionario/FuncionarioLerController.class
 com/mycompany/projetointegrador/view/cliente/TelaClienteEditar.class

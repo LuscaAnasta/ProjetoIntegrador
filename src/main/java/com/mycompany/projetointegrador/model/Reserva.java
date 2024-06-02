@@ -4,10 +4,7 @@
  */
 package com.mycompany.projetointegrador.model;
 
-/**
- *
- * @author lucas
- */
+
 public class Reserva {
 
     public int getId() {

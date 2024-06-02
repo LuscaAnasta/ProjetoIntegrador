@@ -11,10 +11,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author lucas
- */
 public class BoxServico extends JComboBox<String>{
     public BoxServico(){
         setBounds(590, 20, 200, 20);

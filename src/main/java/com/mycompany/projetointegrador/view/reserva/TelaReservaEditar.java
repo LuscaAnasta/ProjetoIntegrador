@@ -39,10 +39,6 @@ import javax.swing.SwingConstants;
 
 
 
-/**
- *
- * @author lucas
- */
 public class TelaReservaEditar extends JDialog{  
     
     private JPanel pnlTela, pnlTabela;

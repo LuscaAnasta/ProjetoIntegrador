@@ -30,10 +30,6 @@ import javax.swing.SwingConstants;
 
 
 
-/**
- *
- * @author lucas
- */
 public class TelaClienteEditar extends JDialog{  
     
     private JPanel pnlTela, pnlAtividade, pnlTabela;

@@ -10,10 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class FuncionarioCadastrarController {
     public static void cadastrarFuncionario(Funcionario funcionarioModel){
         Conexao bancodds = new Conexao();

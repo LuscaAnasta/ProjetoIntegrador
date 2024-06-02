@@ -10,10 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas
- */
+
 public class ServicoCadastrarController {
     public void cadastrarServico(Servico servico){
         Conexao bancodds = new Conexao();

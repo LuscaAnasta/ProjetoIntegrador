@@ -25,12 +25,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-
-
-/**
- *
- * @author lucas
- */
 public class TelaFuncionarioEditar extends JDialog{  
     
     private JPanel pnlTela, pnlTabela;

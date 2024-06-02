@@ -11,10 +11,7 @@ import com.mycompany.projetointegrador.model.Servico;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author lucas
- */
+
 public class BoxCliente extends JComboBox<String>{
     public BoxCliente(){
         setBounds(300, 20, 200, 20);

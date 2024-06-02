@@ -6,10 +6,7 @@ package com.mycompany.projetointegrador.view.reserva.caixasselecao;
 
 import javax.swing.JComboBox;
 
-/**
- *
- * @author lucas
- */
+
 public class BoxHorario extends JComboBox<String>{
     private String[] horarios =  {"09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"};
     public BoxHorario(){

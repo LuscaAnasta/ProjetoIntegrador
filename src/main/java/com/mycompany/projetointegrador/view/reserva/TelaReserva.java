@@ -27,10 +27,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 
-/**
- *
- * @author lucas.amsantos4
- */
 public class TelaReserva extends JFrame{
     private JPanel telaReserva;
     private JPanel panelTabela, panelAtividadeAtual;

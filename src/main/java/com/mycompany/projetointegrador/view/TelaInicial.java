@@ -5,6 +5,8 @@
 package com.mycompany.projetointegrador.view;
 
 
+import com.mycompany.projetointegrador.RoundedBorder;
+import com.mycompany.projetointegrador.TelaLogin;
 import com.mycompany.projetointegrador.view.servico.TelaServico;
 import com.mycompany.projetointegrador.view.reserva.TelaReserva;
 import com.mycompany.projetointegrador.view.cliente.TelaCliente;
@@ -16,10 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
 public class TelaInicial extends JFrame{
     private JPanel telaInicial;
     private JButton btnCliente;
@@ -32,9 +31,9 @@ public class TelaInicial extends JFrame{
     public TelaInicial(){
     
         setResizable(false);
-        setTitle("Inicio");
+        setTitle("Tela Inicial");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 1000, 600);
+        setBounds(500, 200, 600, 450);
         setLocationRelativeTo(null);
         
         telaInicial = new JPanel();
@@ -43,27 +42,35 @@ public class TelaInicial extends JFrame{
         telaInicial.setLayout(null);
         
         btnCliente = new JButton("Clientes");
-        btnCliente.setBounds(500, 100, 300, 50);
+        btnCliente.setBounds(75, 100, 200, 100);
+        btnCliente.setBorder(new RoundedBorder(10));
         telaInicial.add(btnCliente);
         
         btnFuncionario = new JButton("Funcionarios");
-        btnFuncionario.setBounds(500, 200, 300, 50);
+        btnFuncionario.setBounds(325, 100, 200, 100);
+        btnFuncionario.setBorder(new RoundedBorder(10));
         telaInicial.add(btnFuncionario);
         
-        btnReserva = new JButton("Reservas");
-        btnReserva.setBounds(500, 300, 300, 50);
-        telaInicial.add(btnReserva);
-        
         btnServico = new JButton("Serviços");
-        btnServico.setBounds(500, 400, 300, 50);
+        btnServico.setBounds(75, 250, 200, 100);
+        btnServico.setBorder(new RoundedBorder(10));
         telaInicial.add(btnServico);
         
-        btnSair = new JButton("Sair");
-        btnSair.setBounds(50, 500, 100, 50);
+        btnReserva = new JButton("Reservas");
+        btnReserva.setBounds(325, 250, 200, 100);
+        btnReserva.setBorder(new RoundedBorder(10));
+        telaInicial.add(btnReserva);
+        
+        
+        
+        btnSair = new JButton("Logout");
+        btnSair.setBounds(50, 25, 100, 50);
+        btnSair.setBorder(new RoundedBorder(10));
         telaInicial.add(btnSair);
         
-        btnDesligar = new JButton("Desligar");
-        btnDesligar.setBounds(50, 50, 100, 50);
+        btnDesligar = new JButton("Encerrar");
+        btnDesligar.setBounds(450, 25, 100, 50);
+        btnDesligar.setBorder(new RoundedBorder(10));
         telaInicial.add(btnDesligar);
         
         btnCliente.addActionListener(new ActionListener(){
@@ -101,6 +108,14 @@ public class TelaInicial extends JFrame{
         btnDesligar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent x){
             System.exit(0);
+            }
+        });
+        
+        btnSair.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent x){
+                TelaLogin tela = new TelaLogin();
+                tela.setVisible(true);
+                dispose();
             }
         });
         
