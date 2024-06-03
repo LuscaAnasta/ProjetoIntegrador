@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 
 public class ServicoEditarController {
-    public static boolean checarExistencia(Servico servico){
+    private static boolean checarExistencia(Servico servico){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();

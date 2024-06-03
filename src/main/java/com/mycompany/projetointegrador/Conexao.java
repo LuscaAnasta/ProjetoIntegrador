@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 
@@ -34,6 +35,7 @@ public class Conexao {
             stmt= con.createStatement();
             System.out.println("Conexão aberta com sucesso");    
         }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao acessar banco ");
             System.out.println("Erro ao acessar banco de dados");
             e.printStackTrace();
         }

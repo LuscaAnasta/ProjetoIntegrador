@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 
 public class ReservaEditarController {
-    public boolean checarExistencia(Reserva reserva){
+    private boolean checarExistencia(Reserva reserva){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();

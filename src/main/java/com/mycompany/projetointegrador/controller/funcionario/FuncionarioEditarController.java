@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 
 public class FuncionarioEditarController {
-    public static boolean checarExistencia(Funcionario funcionario){
+    private static boolean checarExistencia(Funcionario funcionario){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();

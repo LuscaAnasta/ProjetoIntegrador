@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 public class ClienteEditarController {
     
-    public static boolean checarExistencia(Cliente cliente){
+    private static boolean checarExistencia(Cliente cliente){
         
         Conexao banco = new Conexao();
         banco.AbrirConexao();
@@ -75,7 +75,7 @@ public class ClienteEditarController {
                 atualizarDados.close();
                 JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso");
             }else{
-                JOptionPane.showMessageDialog(null,"Cliente ja esta Cadastrado.");
+                JOptionPane.showMessageDialog(null,"CPF ja esta Cadastrado.");
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Algo deu errado, editar");
