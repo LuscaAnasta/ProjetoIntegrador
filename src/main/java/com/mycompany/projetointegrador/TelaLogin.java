@@ -23,7 +23,7 @@ public class TelaLogin extends JFrame{
     private JTextField txtLogin;
     private JPasswordField txtSenha;
     private JLabel lbllogin, lblsenha;
-    private JButton btnLogar;
+    private JButton btnLogar , btnTestes;
     public TelaLogin(){
         setResizable(false);
         setTitle("Login");
@@ -68,6 +68,8 @@ public class TelaLogin extends JFrame{
             }
         });
     }
+    
+        
     
     public boolean verificar(){
         String login = txtLogin.getText();
